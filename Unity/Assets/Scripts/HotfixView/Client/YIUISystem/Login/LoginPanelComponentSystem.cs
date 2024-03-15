@@ -29,8 +29,6 @@ namespace ET.Client
             return true;
         }
 
-        #region YIUIEvent开始
-        
         private static void OnEventPasswordAction(this LoginPanelComponent self, string p1)
         {
             Log.Info($"当前密码: {p1}");
@@ -50,6 +48,5 @@ namespace ET.Client
             await LoginHelper.Login(self.Root(), self.Account, self.Password);
             YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
         }
-        #endregion YIUIEvent结束
     }
 }

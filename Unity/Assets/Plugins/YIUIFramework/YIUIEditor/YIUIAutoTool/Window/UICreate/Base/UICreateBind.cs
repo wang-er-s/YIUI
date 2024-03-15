@@ -14,8 +14,6 @@ namespace YIUIFramework.Editor
         {
             var sb = SbPool.Get();
             cdeTable.GetComponentTable(sb);
-            cdeTable.GetDataTable(sb);
-            cdeTable.GetEventTable(sb);
             cdeTable.GetCDETable(sb);
             return SbPool.PutAndToStr(sb);
         }
@@ -33,41 +31,6 @@ namespace YIUIFramework.Editor
                 if (bindCom == null) continue;
                 sb.AppendFormat("            self.{1} = self.UIBase.ComponentTable.FindComponent<{0}>(\"{1}\");\r\n", bindCom.GetType(),
                     name);
-            }
-        }
-
-        private static void GetDataTable(this UIBindCDETable self, StringBuilder sb)
-        {
-            var tab = self.DataTable;
-            if (tab == null) return;
-
-            foreach (var value in tab.DataDic)
-            {
-                var name = value.Key;
-                if (string.IsNullOrEmpty(name)) continue;
-                var uiData    = value.Value;
-                var dataValue = uiData?.DataValue;
-                if (dataValue == null) continue;
-                sb.AppendFormat("            self.{1} = self.UIBase.DataTable.FindDataValue<{0}>(\"{1}\");\r\n", dataValue.GetType(),
-                    name);
-            }
-        }
-
-        private static void GetEventTable(this UIBindCDETable self, StringBuilder sb)
-        {
-            var tab = self.EventTable;
-            if (tab == null) return;
-
-            foreach (var value in tab.EventDic)
-            {
-                var name = value.Key;
-                if (string.IsNullOrEmpty(name)) continue;
-                var uiEventBase = value.Value;
-                if (uiEventBase == null) continue;
-                sb.AppendFormat("            self.{1} = self.UIBase.EventTable.FindEvent<{0}>(\"{1}\");\r\n", uiEventBase.GetEventType(),
-                    name);
-                sb.AppendFormat("            self.{0} = self.{1}.Add(self.{2});\r\n", $"{name}Handle", name,
-                    $"OnEvent{name.Replace($"{NameUtility.FirstName}{NameUtility.EventName}", "")}Action");
             }
         }
 
@@ -173,28 +136,6 @@ namespace YIUIFramework.Editor
                 default:
                     Debug.LogError($"新增类型未实现 {self.UICodeType}");
                     break;
-            }
-        }
-
-        public static string GetUnBind(UIBindCDETable cdeTable)
-        {
-            var sb = SbPool.Get();
-            cdeTable.GetUnEventTable(sb);
-            return SbPool.PutAndToStr(sb);
-        }
-
-        private static void GetUnEventTable(this UIBindCDETable self, StringBuilder sb)
-        {
-            var tab = self.EventTable;
-            if (tab == null) return;
-
-            foreach (var value in tab.EventDic)
-            {
-                var name = value.Key;
-                if (string.IsNullOrEmpty(name)) continue;
-                var uiEventBase = value.Value;
-                if (uiEventBase == null) continue;
-                sb.AppendFormat("            {0}.Remove({1});\r\n", name, $"{name}Handle");
             }
         }
     }

@@ -29,8 +29,6 @@ namespace ET.Client
 
         public UIBindCDETable       CDETable       { get; private set; }
         public UIBindComponentTable ComponentTable { get; private set; }
-        public UIBindDataTable      DataTable      { get; private set; }
-        public UIBindEventTable     EventTable     { get; private set; }
 
         /// <summary>
         /// 当前UI的预设对象
@@ -113,8 +111,6 @@ namespace ET.Client
             }
 
             ComponentTable           = CDETable.ComponentTable;
-            DataTable                = CDETable.DataTable;
-            EventTable               = CDETable.EventTable;
             m_UIBindVo               = uiBindVo;
             UIResName                = uiBindVo.ResName;
             m_UIBaseInit             = true;

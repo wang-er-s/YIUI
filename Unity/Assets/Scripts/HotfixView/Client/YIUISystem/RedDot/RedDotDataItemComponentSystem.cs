@@ -20,13 +20,6 @@ namespace ET.Client
         public static void RefreshData(this RedDotDataItemComponent self, RedDotData data)
         {
             self.m_Data        = data;
-            self.u_DataCount.SetValue(data.Count);
-            self.u_DataName.SetValue(RedDotMgr.Inst.GetKeyDes(data.Key));
-            self.u_DataTips.SetValue(data.Tips);
-            self.u_DataKeyId.SetValue((int)data.Key);
-            self.u_DataParentCount.SetValue(data.ParentList.Count);
-            self.u_DataChildCount.SetValue(data.ChildList.Count);
-            self.u_DataSwitchTips.SetValue(data.Config.SwitchTips);
         }
 
         #region YIUIEvent开始

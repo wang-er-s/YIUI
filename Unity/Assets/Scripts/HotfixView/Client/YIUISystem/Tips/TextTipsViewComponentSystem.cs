@@ -29,7 +29,6 @@ namespace ET.Client
                 return false;
             }
 
-            self.u_DataMessageContent.SetValue(content);
             self.PlayAnimation().Coroutine();
             return true;
         }

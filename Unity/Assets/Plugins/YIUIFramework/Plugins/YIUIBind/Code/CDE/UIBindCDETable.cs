@@ -27,18 +27,6 @@ namespace YIUIFramework
         #endif
         public UIBindComponentTable ComponentTable;
 
-        #if UNITY_EDITOR
-        [InlineButton("AddDataTable", "Add")]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
-        #endif
-        public UIBindDataTable DataTable;
-
-        #if UNITY_EDITOR
-        [InlineButton("AddEventTable", "Add")]
-        [EnableIf("@UIOperationHelper.CommonShowIf()")]
-        #endif
-        public UIBindEventTable EventTable;
-
         [LabelText("UI包名")]
         [ReadOnly]
         public string PkgName;

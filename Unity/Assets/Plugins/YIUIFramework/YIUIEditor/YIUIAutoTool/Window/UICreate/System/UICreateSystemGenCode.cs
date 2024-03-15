@@ -31,7 +31,6 @@ namespace YIUIFramework.Editor
             ValueDic["UIFriendOf"]    = codeData.UIFriend;
             ValueDic["UIBase"]        = codeData.UIBase;
             ValueDic["UIBind"]        = codeData.UIBind;
-            ValueDic["UIUnBind"]      = codeData.UIUnBind;
             ValueDic["VirtualMethod"] = codeData.VirtualMethod;
             ValueDic["PanelViewEnum"] = codeData.PanelViewEnum;
             ValueDic["CodeType"]      = codeData.CodeType.ToString();

@@ -1,4 +1,7 @@
-﻿using YIUIFramework;
+﻿using System;
+using UnityEngine;
+using YIUIFramework;
+using System.Collections.Generic;
 
 namespace ET.Client
 {
@@ -18,12 +21,7 @@ namespace ET.Client
         public YIUIWindowComponent UIWindow => u_UIWindow;
         public EntityRef<YIUIPanelComponent> u_UIPanel;
         public YIUIPanelComponent UIPanel => u_UIPanel;
-        public UITaskEventP0 u_EventLogin;
-        public UITaskEventHandleP0 u_EventLoginHandle;
-        public UIEventP1<string> u_EventAccount;
-        public UIEventHandleP1<string> u_EventAccountHandle;
-        public UIEventP1<string> u_EventPassword;
-        public UIEventHandleP1<string> u_EventPasswordHandle;
+        public UnityEngine.UI.Button u_ComBtnLogin;
 
     }
 }

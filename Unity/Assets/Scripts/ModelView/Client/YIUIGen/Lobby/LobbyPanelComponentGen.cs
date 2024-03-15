@@ -18,8 +18,6 @@ namespace ET.Client
         public YIUIWindowComponent UIWindow => u_UIWindow;
         public EntityRef<YIUIPanelComponent> u_UIPanel;
         public YIUIPanelComponent UIPanel => u_UIPanel;
-        public UITaskEventP0 u_EventEnter;
-        public UITaskEventHandleP0 u_EventEnterHandle;
 
     }
 }

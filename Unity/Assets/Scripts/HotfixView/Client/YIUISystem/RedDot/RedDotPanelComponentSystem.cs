@@ -133,21 +133,12 @@ namespace ET.Client
         private static void InitInfo(this RedDotPanelComponent self)
         {
             self.m_StackScroll = new YIUILoopScroll<RedDotStack, RedDotStackItemComponent>(self, self.u_ComStackScroll, self.StackRenderer);
-            self.u_DataToggleUnityEngine.SetValue(RedDotStackHelper.StackHideUnityEngine);
-            self.u_DataToggleYIUIFramework.SetValue(RedDotStackHelper.StackHideYIUIFramework);
-            self.u_DataToggleYIUIBind.SetValue(RedDotStackHelper.StackHideYIUIBind);
-            self.u_DataToggleShowIndex.SetValue(RedDotStackHelper.ShowStackIndex);
-            self.u_DataToggleShowFileName.SetValue(RedDotStackHelper.ShowFileNameStack);
-            self.u_DataToggleShowFilePath.SetValue(RedDotStackHelper.ShowFilePath);
+
         }
 
         private static void StackRenderer(this RedDotPanelComponent self, int index, RedDotStack data, RedDotStackItemComponent item, bool select)
         {
-            item.u_DataId.SetValue(data.Id);
-            item.u_DataTime.SetValue(data.GetTime());
-            item.u_DataOs.SetValue(data.GetOS(self.m_InfoData));
-            item.u_DataSource.SetValue(data.GetSource());
-            item.u_DataShowStack.SetValue(false);
+
             item.RedDotStackData = data;
         }
 
@@ -161,7 +152,6 @@ namespace ET.Client
             self.RemoveInfoChanged();
             self.m_InfoData = data;
             RedDotMgr.Inst.AddChanged(self.m_InfoData.Key, self.OnInfoChangeCount);
-            self.u_DataInfoName.SetValue($"{(int)data.Key} {RedDotMgr.Inst.GetKeyDes(data.Key)}");
             self.u_ComInputChangeCount.text = self.m_InfoData.Count.ToString();
             self.RefreshInfoScroll();
         }
@@ -245,42 +235,36 @@ namespace ET.Client
         private static void OnEventChangeToggleYIUIFrameworkAction(this RedDotPanelComponent self, bool p1)
         {
             RedDotStackHelper.StackHideYIUIFramework = p1;
-            self.u_DataToggleYIUIFramework.SetValue(p1);
             self.ChangeToggleRefreshStack();
         }
 
         private static void OnEventChangeToggleYIUIBindAction(this RedDotPanelComponent self, bool p1)
         {
             RedDotStackHelper.StackHideYIUIBind = p1;
-            self.u_DataToggleYIUIBind.SetValue(p1);
             self.ChangeToggleRefreshStack();
         }
 
         private static void OnEventChangeToggleUnityEngineAction(this RedDotPanelComponent self, bool p1)
         {
             RedDotStackHelper.StackHideUnityEngine = p1;
-            self.u_DataToggleUnityEngine.SetValue(p1);
             self.ChangeToggleRefreshStack();
         }
 
         private static void OnEventChangeToggleShowStackIndexAction(this RedDotPanelComponent self, bool p1)
         {
             RedDotStackHelper.ShowStackIndex = p1;
-            self.u_DataToggleShowIndex.SetValue(p1);
             self.ChangeToggleRefreshStack();
         }
 
         private static void OnEventChangeToggleShowFilePathAction(this RedDotPanelComponent self, bool p1)
         {
             RedDotStackHelper.ShowFilePath = p1;
-            self.u_DataToggleShowFilePath.SetValue(p1);
             self.ChangeToggleRefreshStack();
         }
 
         private static void OnEventChangeToggleShowFileNameAction(this RedDotPanelComponent self, bool p1)
         {
             RedDotStackHelper.ShowFileNameStack = p1;
-            self.u_DataToggleShowFileName.SetValue(p1);
             self.ChangeToggleRefreshStack();
         }
 

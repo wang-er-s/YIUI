@@ -49,11 +49,6 @@ namespace ET.Client
             }
 
             self.ExtraData = vo.Get(1, new MessageTipsExtraData());
-            self.u_DataMessageContent.SetValue(content);
-            self.u_DataShowCancel.SetValue(self.ExtraData.CancelCallBack != null);
-            self.u_DataShowClose.SetValue(self.ExtraData.CloseCallBack != null);
-            self.u_DataConfirmName.SetValue(string.IsNullOrEmpty(self.ExtraData.ConfirmName)? "确定" : self.ExtraData.ConfirmName);
-            self.u_DataCancelName.SetValue(string.IsNullOrEmpty(self.ExtraData.CancelName)? "取消" : self.ExtraData.CancelName);
             return true;
         }
 

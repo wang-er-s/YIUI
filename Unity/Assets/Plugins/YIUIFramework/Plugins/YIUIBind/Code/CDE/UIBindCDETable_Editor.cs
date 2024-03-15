@@ -143,8 +143,6 @@ namespace YIUIFramework
 
             UICreateModule.RefreshChildCdeTable(this);
             ComponentTable?.AutoCheck();
-            DataTable?.AutoCheck();
-            EventTable?.AutoCheck();
             return true;
         }
 
@@ -240,8 +238,6 @@ namespace YIUIFramework
         private void OnValidate()
         {
             ComponentTable ??= GetComponent<UIBindComponentTable>();
-            DataTable      ??= GetComponent<UIBindDataTable>();
-            EventTable     ??= GetComponent<UIBindEventTable>();
         }
 
         private void AddComponentTable()
@@ -249,20 +245,6 @@ namespace YIUIFramework
             if (!UIOperationHelper.CheckUIOperation()) return;
 
             ComponentTable = gameObject.GetOrAddComponent<UIBindComponentTable>();
-        }
-
-        private void AddDataTable()
-        {
-            if (!UIOperationHelper.CheckUIOperation()) return;
-
-            DataTable = gameObject.GetOrAddComponent<UIBindDataTable>();
-        }
-
-        private void AddEventTable()
-        {
-            if (!UIOperationHelper.CheckUIOperation()) return;
-
-            EventTable = gameObject.GetOrAddComponent<UIBindEventTable>();
         }
     }
 }

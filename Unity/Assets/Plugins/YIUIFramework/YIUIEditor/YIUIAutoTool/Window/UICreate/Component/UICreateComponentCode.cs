@@ -29,7 +29,6 @@ namespace YIUIFramework.Editor
             ValueDic["ResName"]       = codeData.ResName;
             ValueDic["Variables"]     = codeData.Variables;
             ValueDic["UIBind"]        = codeData.UIBind;
-            ValueDic["UIUnBind"]      = codeData.UIUnBind;
             ValueDic["VirtualMethod"] = codeData.VirtualMethod;
             ValueDic["PanelViewEnum"] = codeData.PanelViewEnum;
             ValueDic["CodeType"]      = codeData.CodeType.ToString();

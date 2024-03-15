@@ -20,7 +20,6 @@ namespace ET.Client
         public YIUIViewComponent UIView => u_UIView;
         public UnityEngine.RectTransform u_ComContent;
         public UnityEngine.Animation u_ComAnimation;
-        public YIUIFramework.UIDataValueString u_DataMessageContent;
 
     }
 }

@@ -16,9 +16,7 @@ namespace YIUIFramework.Editor
             var sb = SbPool.Get();
             cdeTable.GetOverrideConfig(sb);
             cdeTable.GetComponentTable(sb);
-            cdeTable.GetDataTable(sb);
             cdeTable.GetCDETable(sb);
-            cdeTable.GetEventTable(sb);
             return SbPool.PutAndToStr(sb);
         }
 
@@ -34,40 +32,6 @@ namespace YIUIFramework.Editor
                 var bindCom = value.Value;
                 if (bindCom == null) continue;
                 sb.AppendFormat("        public {0} {1};\r\n", bindCom.GetType(), name);
-            }
-        }
-
-        private static void GetDataTable(this UIBindCDETable self, StringBuilder sb)
-        {
-            var tab = self.DataTable;
-            if (tab == null) return;
-
-            foreach (var value in tab.DataDic)
-            {
-                var name = value.Key;
-                if (string.IsNullOrEmpty(name)) continue;
-                var uiData    = value.Value;
-                var dataValue = uiData?.DataValue;
-                if (dataValue == null) continue;
-                sb.AppendFormat("        public {0} {1};\r\n", dataValue.GetType(), name);
-            }
-        }
-
-        private static void GetEventTable(this UIBindCDETable self, StringBuilder sb)
-        {
-            var tab = self.EventTable;
-            if (tab == null) return;
-
-            foreach (var value in tab.EventDic)
-            {
-                var name = value.Key;
-                if (string.IsNullOrEmpty(name)) continue;
-                var uiEventBase = value.Value;
-                if (uiEventBase == null) continue;
-                sb.AppendFormat("        public {0} {1};\r\n", uiEventBase.GetEventType(),
-                    name);
-                sb.AppendFormat("        public {0} {1};\r\n",
-                    uiEventBase.GetEventHandleType(), $"{name}Handle");
             }
         }
 

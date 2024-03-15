@@ -118,5 +118,13 @@ namespace YIUIFramework
             }
         }
     }
-    
+
+    public enum ParamGetResult
+    {
+        Success,
+        ParseErr,
+        IndexIsOut,
+        IndexIsLess,
+        DataIsNull
+    }
 }

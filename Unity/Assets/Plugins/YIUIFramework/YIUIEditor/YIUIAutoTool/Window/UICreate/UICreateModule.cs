@@ -70,8 +70,6 @@ namespace YIUIFramework.Editor
                 UIFriend      = UICreateBind.GetFriend(cdeTable),
                 UIBase        = UICreateBind.GetBase(cdeTable),
                 UIBind        = UICreateBind.GetBind(cdeTable),
-                UIUnBind      = UICreateBind.GetUnBind(cdeTable),
-                VirtualMethod = UICreateMethod.Get(cdeTable),
                 PanelViewEnum = UICreatePanelViewEnum.Get(cdeTable),
             };
 
@@ -89,8 +87,6 @@ namespace YIUIFramework.Editor
                 Namespace   = UIStaticHelper.UINamespace,
                 PkgName     = cdeTable.PkgName,
                 ResName     = cdeTable.ResName,
-                OverrideDic = UICreateMethod.GetSystemEventOverrideDic(cdeTable),
-                CoverDic    = UICreateMethod.CoverSystemDefaultEventDic(cdeTable),
             };
 
             //生成的component
@@ -124,15 +120,6 @@ namespace YIUIFramework.Editor
 
             if (refresh)
                 AssetDatabase.Refresh();
-        }
-
-        private static string GetRegionEvent(UIBindCDETable cdeTable)
-        {
-            if (cdeTable.EventTable == null || cdeTable.EventTable.EventDic == null)
-                return "";
-            return cdeTable.EventTable.EventDic.Count <= 0
-                    ? ""
-                    : "        #region YIUIEvent开始\r\n\r\n        #endregion YIUIEvent结束";
         }
 
         internal static bool InitVoName(UIBindCDETable cdeTable)

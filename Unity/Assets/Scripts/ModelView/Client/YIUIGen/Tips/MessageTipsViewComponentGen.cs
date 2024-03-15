@@ -18,17 +18,6 @@ namespace ET.Client
         public YIUIWindowComponent UIWindow => u_UIWindow;
         public EntityRef<YIUIViewComponent> u_UIView;
         public YIUIViewComponent UIView => u_UIView;
-        public YIUIFramework.UIDataValueString u_DataMessageContent;
-        public YIUIFramework.UIDataValueBool u_DataShowClose;
-        public YIUIFramework.UIDataValueBool u_DataShowCancel;
-        public YIUIFramework.UIDataValueString u_DataConfirmName;
-        public YIUIFramework.UIDataValueString u_DataCancelName;
-        public UIEventP0 u_EventClose;
-        public UIEventHandleP0 u_EventCloseHandle;
-        public UIEventP0 u_EventCancel;
-        public UIEventHandleP0 u_EventCancelHandle;
-        public UIEventP0 u_EventConfirm;
-        public UIEventHandleP0 u_EventConfirmHandle;
 
     }
 }

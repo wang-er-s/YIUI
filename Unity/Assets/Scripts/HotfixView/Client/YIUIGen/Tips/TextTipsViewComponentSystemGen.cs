@@ -35,7 +35,6 @@ namespace ET.Client
 
             self.u_ComContent = self.UIBase.ComponentTable.FindComponent<UnityEngine.RectTransform>("u_ComContent");
             self.u_ComAnimation = self.UIBase.ComponentTable.FindComponent<UnityEngine.Animation>("u_ComAnimation");
-            self.u_DataMessageContent = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueString>("u_DataMessageContent");
 
         }
     }

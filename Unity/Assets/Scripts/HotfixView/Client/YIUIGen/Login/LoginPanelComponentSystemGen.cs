@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using YIUIFramework;
 using System.Collections.Generic;
 
@@ -29,19 +30,9 @@ namespace ET.Client
             self.u_UIBase = self.GetParent<YIUIComponent>();
             self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
             self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
-            self.UIWindow.WindowOption = EWindowOption.None;
-            self.UIPanel.Layer = EPanelLayer.Popup;
-            self.UIPanel.PanelOption = EPanelOption.TimeCache;
-            self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
-            self.UIPanel.Priority = 0;
-            self.UIPanel.CachePanelTime = 10;
+      
 
-            self.u_EventLogin = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventLogin");
-            self.u_EventLoginHandle = self.u_EventLogin.Add(self.OnEventLoginAction);
-            self.u_EventAccount = self.UIBase.EventTable.FindEvent<UIEventP1<string>>("u_EventAccount");
-            self.u_EventAccountHandle = self.u_EventAccount.Add(self.OnEventAccountAction);
-            self.u_EventPassword = self.UIBase.EventTable.FindEvent<UIEventP1<string>>("u_EventPassword");
-            self.u_EventPasswordHandle = self.u_EventPassword.Add(self.OnEventPasswordAction);
+            self.u_ComBtnLogin = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Button>("u_ComBtnLogin");
 
         }
     }

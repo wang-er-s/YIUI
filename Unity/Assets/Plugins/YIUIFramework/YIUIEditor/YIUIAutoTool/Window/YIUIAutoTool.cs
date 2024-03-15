@@ -143,17 +143,12 @@ namespace YIUIFramework.Editor
         [ShowInInspector]
         internal UIAtlasModule AtlasModule = new();
         
-        [BoxGroup("其他设置", centerLabel: true)]
-        [ShowInInspector]
-        internal UIOtherModule OtherModule = new();
-        
         protected override void Initialize()
         {
             base.Initialize();
             m_Author = UserNamePrefs.Value;
             m_UIBaseModule?.Initialize();
             AtlasModule?.Initialize();
-            OtherModule?.Initialize();
         }
 
         protected override void OnDestroy()
@@ -162,7 +157,6 @@ namespace YIUIFramework.Editor
             UserNamePrefs.Value = Author;
             m_UIBaseModule?.OnDestroy();
             AtlasModule?.OnDestroy();
-            OtherModule?.OnDestroy();
 
             foreach (var menuItem in m_AllMenuItem)
             {
