@@ -5,7 +5,7 @@
         [EntitySystem]
         private static void Awake(this ${ResName}Component self, UIBase uiBase)
         {
-            self.UI             = (${ResName})uiBase;
+            self.UI = (${ResName})uiBase;
             self.UI.UIComponent = self;
         }
         

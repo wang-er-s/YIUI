@@ -61,10 +61,6 @@ namespace YIUIFramework.Editor
                 Tree.AddMenuItemAtPath(m_PublishName,
                     new OdinMenuItem(Tree, pkgName, newUIPublishPackageModule)).AddIcon(EditorIcons.Folder);
 
-                //1 图集
-                Tree.AddAllAssetsAtPath($"{m_PublishName}/{pkgName}/{UIStaticHelper.UIAtlasCN}",
-                    $"{m_AllPkgPath}/{pkgName}/{UIStaticHelper.UIAtlas}", typeof(SpriteAtlas), true, false);
-
                 //2 预制体
                 Tree.AddAllAssetsAtPath($"{m_PublishName}/{pkgName}/{UIStaticHelper.UIPrefabsCN}",
                     $"{m_AllPkgPath}/{pkgName}/{UIStaticHelper.UIPrefabs}", typeof(UIBindCDETable), true, false);

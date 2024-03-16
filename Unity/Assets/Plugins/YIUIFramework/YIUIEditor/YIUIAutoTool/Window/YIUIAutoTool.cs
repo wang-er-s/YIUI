@@ -139,16 +139,11 @@ namespace YIUIFramework.Editor
         [ShowInInspector]
         private readonly BaseCreateModule m_UIBaseModule = new CreateUIBaseModule();
 
-        [BoxGroup("全局图集设置", centerLabel: true)]
-        [ShowInInspector]
-        internal UIAtlasModule AtlasModule = new();
-        
         protected override void Initialize()
         {
             base.Initialize();
             m_Author = UserNamePrefs.Value;
             m_UIBaseModule?.Initialize();
-            AtlasModule?.Initialize();
         }
 
         protected override void OnDestroy()
@@ -156,7 +151,6 @@ namespace YIUIFramework.Editor
             base.OnDestroy();
             UserNamePrefs.Value = Author;
             m_UIBaseModule?.OnDestroy();
-            AtlasModule?.OnDestroy();
 
             foreach (var menuItem in m_AllMenuItem)
             {

@@ -48,16 +48,7 @@ namespace YIUICodeGenerated
                 ComponentType = typeof(ET.Client.RedDotDataItemComponent),
             };
 
-            list[8] = new YIUIBindVo
-            {
-                PkgName       = ET.Client.LoginPanelComponent.PkgName,
-                ResName       = ET.Client.LoginPanelComponent.ResName,
-                CodeType      = EUICodeType.Panel,
-                PanelLayer    = EPanelLayer.Popup,
-                ComponentType = typeof(ET.Client.LoginPanelComponent),
-            };
-
-            list[9] = new YIUIBindVo
+                    list[9] = new YIUIBindVo
             {
                 PkgName       = ET.Client.TipsPanelComponent.PkgName,
                 ResName       = ET.Client.TipsPanelComponent.ResName,

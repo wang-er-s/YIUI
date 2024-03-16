@@ -27,8 +27,6 @@ namespace YIUIFramework.Editor
     {
         private UIPublishModule m_UIPublishModule;
 
-        private UIAtlasModule m_UIAtlasModule;
-
         [LabelText("模块名")]
         [ReadOnly]
         public string PkgName;
@@ -61,12 +59,6 @@ namespace YIUIFramework.Editor
         [ShowIf("m_UIPublishPackageData", EUIPublishPackageData.Atlas)]
         public HashSet<string> m_AtlasName = new HashSet<string>();
 
-        [LabelText("当前模块所有图集")]
-        [ReadOnly]
-        [ShowInInspector]
-        [ShowIf("m_UIPublishPackageData", EUIPublishPackageData.Atlas)]
-        private List<SpriteAtlas> m_AllSpriteAtlas = new List<SpriteAtlas>();
-
         [GUIColor(0.4f, 0.8f, 1)]
         [Button("发布当前模块", 50)]
         [PropertyOrder(-999)]
@@ -83,9 +75,6 @@ namespace YIUIFramework.Editor
             {
                 current.CreateUICode(false, false);
             }
-
-            //创建图集 不重置 需要重置需要手动
-            CreateOrResetAtlas();
 
             if (showTips)
                 UnityTipsHelper.CallBackOk($"YIUI当前模块 {PkgName} 发布完毕", YIUIAutoTool.CloseWindowRefresh);
@@ -105,12 +94,10 @@ namespace YIUIFramework.Editor
         public UIPublishPackageModule(UIPublishModule publishModule, string pkgName)
         {
             m_UIPublishModule = publishModule;
-            m_UIAtlasModule   = ((YIUIAutoTool)publishModule.AutoTool).AtlasModule;
             PkgName           = pkgName;
             PkgPath           = $"{UIStaticHelper.UIProjectResPath}/{pkgName}";
             FindUIBindCDETableResources();
             FindUITextureResources();
-            FindUISpriteAtlasResources();
         }
 
         private void FindUIBindCDETableResources()
@@ -177,94 +164,8 @@ namespace YIUIFramework.Editor
             return GetSpritesAtlasName(parentInfo.FullName, parentInfo.Name);
         }
 
-        private void FindUISpriteAtlasResources()
-        {
-            var strings = AssetDatabase.GetAllAssetPaths().Where(x =>
-                x.StartsWith($"{PkgPath}/{UIStaticHelper.UIAtlas}", StringComparison.InvariantCultureIgnoreCase));
-
-            foreach (var path in strings)
-            {
-                var spriteAtlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(path);
-                if (spriteAtlas != null)
-                {
-                    m_AllSpriteAtlas.Add(spriteAtlas);
-                }
-            }
-        }
-
         #endregion
 
-        #region 图集
-
-        [Button("创建and强制更新 图集", 30)]
-        [PropertyOrder(-997)]
-        private void CurrentAtlas()
-        {
-            if (!UIOperationHelper.CheckUIOperation()) return;
-
-            CreateOrResetAtlas(true);
-            YIUIAutoTool.CloseWindowRefresh();
-        }
-
-        public void CreateOrResetAtlas(bool reset = false)
-        {
-            foreach (var atlasName in m_AtlasName)
-            {
-                CreateAtlas(atlasName);
-                if (reset)
-                {
-                    ResetAtlas(atlasName);
-                }
-            }
-        }
-
-        public void ResetAtlas(string atlasName)
-        {
-            if (atlasName == UIStaticHelper.UIAtlasIgnore) return;
-
-            var atlasFillName = $"{PkgPath}/{UIStaticHelper.UIAtlas}/Atlas_{PkgName}_{atlasName}.spriteatlas";
-
-            if (!File.Exists(atlasFillName)) return;
-
-            var spriteAtlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(atlasFillName);
-
-            ResetAtlas(spriteAtlas, atlasName);
-        }
-
-        public void CreateAtlas(string atlasName)
-        {
-            if (atlasName == UIStaticHelper.UIAtlasIgnore) return;
-
-            var atlasFillName = $"{PkgPath}/{UIStaticHelper.UIAtlas}/Atlas_{PkgName}_{atlasName}.spriteatlas";
-
-            if (File.Exists(atlasFillName)) return;
-
-            var spriteAtlas = new SpriteAtlas();
-
-            ResetAtlas(spriteAtlas, atlasName);
-
-            if (!Directory.Exists(Path.GetDirectoryName(atlasFillName)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(atlasFillName));
-            }
-
-            AssetDatabase.CreateAsset(spriteAtlas, atlasFillName);
-        }
-
-        private void ResetAtlas(SpriteAtlas spriteAtlas, string atlasName)
-        {
-            if (spriteAtlas == null) return;
-
-            m_UIAtlasModule.ResetTargetBuildSetting(spriteAtlas);
-
-            var packables = spriteAtlas.GetPackables();
-            spriteAtlas.Remove(packables);
-
-            var itemPath = $"{PkgPath}/{UIStaticHelper.UISprites}/{atlasName}";
-            spriteAtlas.Add(new[] { AssetDatabase.LoadMainAssetAtPath(itemPath) });
-        }
-
-        #endregion
     }
 }
 #endif

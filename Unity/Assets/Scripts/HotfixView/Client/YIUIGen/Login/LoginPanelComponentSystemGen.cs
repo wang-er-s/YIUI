@@ -27,12 +27,18 @@ namespace ET.Client
         
         private static void UIBind(this LoginPanelComponent self)
         {
-            self.u_UIBase = self.GetParent<YIUIComponent>();
-            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
-      
+            self.UIBase = self.GetParent<YIUIComponent>();
+            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
+            self.UIWindow.WindowOption = EWindowOption.None;
+            self.UIPanel.Layer = EPanelLayer.Panel;
+            self.UIPanel.PanelOption = EPanelOption.None;
+            self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
+            self.UIPanel.Priority = 0;
 
-            self.u_ComBtnLogin = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Button>("u_ComBtnLogin");
+            self.BtnLogin = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Button>("BtnLogin");
+            self.BtnLogin2 = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Button>("BtnLogin2");
+            self.UILoginExistView = self.UIBase.CDETable.FindUIOwner<ET.Client.LoginExistViewComponent>("LoginExistView");
 
         }
     }

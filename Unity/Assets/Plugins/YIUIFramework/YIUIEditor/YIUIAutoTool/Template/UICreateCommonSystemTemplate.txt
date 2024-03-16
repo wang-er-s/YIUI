@@ -16,12 +16,6 @@ namespace ${Namespace}
         [EntitySystem]
         private static void YIUIInitialize(this ${ResName}Component self)
         {
-              self.UIWindow.WindowOption = EWindowOption.None;
-              self.UIPanel.Layer = EPanelLayer.Popup;
-              self.UIPanel.PanelOption = EPanelOption.TimeCache;
-              self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
-              self.UIPanel.Priority = 0;
-              self.UIPanel.CachePanelTime = 10;
         }
 
         [EntitySystem]
@@ -29,7 +23,5 @@ namespace ${Namespace}
         {
         }
         
-        #region YIUIEvent开始
-        #endregion YIUIEvent结束
     }
 }

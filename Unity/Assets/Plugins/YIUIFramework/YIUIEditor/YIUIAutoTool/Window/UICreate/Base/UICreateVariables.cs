@@ -56,10 +56,10 @@ namespace YIUIFramework.Editor
                 }
 
                 existName.Add(newName);
-                sb.AppendFormat("        public {0} {1};\r\n",
+                sb.AppendFormat("        private {0} {1};\r\n",
                     $"EntityRef<{UIStaticHelper.UINamespace}.{resName}Component>", newName);
-                sb.AppendFormat("        public {0} {1} => {2};\r\n",
-                    $"{UIStaticHelper.UINamespace}.{resName}Component", newName.Replace(NameUtility.FirstName, ""), newName);
+                sb.Append(
+                    $"        public {UIStaticHelper.UINamespace}.{resName}Component {newName.Replace(NameUtility.FirstName, "")} {{get => {newName}; set => {newName} = value;}} \r\n");
             }
         }
 
@@ -82,28 +82,28 @@ namespace YIUIFramework.Editor
             switch (self.UICodeType)
             {
                 case EUICodeType.Common:
-                    sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
-                    sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
+                    sb.AppendFormat("        private EntityRef<YIUIComponent> u_UIBase;\r\n");
+                    sb.Append("        public YIUIComponent UIBase { get => u_UIBase; set => u_UIBase = value;}\r\n");
                     return;
                 case EUICodeType.Panel:
-                    sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
-                    sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
+                    sb.AppendFormat("        private EntityRef<YIUIComponent> u_UIBase;\r\n");
+                    sb.Append("        public YIUIComponent UIBase { get => u_UIBase; set => u_UIBase = value;}\r\n");
 
-                    sb.AppendFormat("        public EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
-                    sb.AppendFormat("        public YIUIWindowComponent UIWindow => u_UIWindow;\r\n");
+                    sb.AppendFormat("        private EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
+                    sb.Append("        public YIUIWindowComponent UIWindow { get => u_UIWindow; set => u_UIWindow = value;}\r\n");
 
-                    sb.AppendFormat("        public EntityRef<YIUIPanelComponent> u_UIPanel;\r\n");
-                    sb.AppendFormat("        public YIUIPanelComponent UIPanel => u_UIPanel;\r\n");
+                    sb.AppendFormat("        private EntityRef<YIUIPanelComponent> u_UIPanel;\r\n");
+                    sb.Append("        public YIUIPanelComponent UIPanel { get => u_UIPanel; set => u_UIPanel = value;}\r\n");
                     break;
                 case EUICodeType.View:
-                    sb.AppendFormat("        public EntityRef<YIUIComponent> u_UIBase;\r\n");
-                    sb.AppendFormat("        public YIUIComponent UIBase => u_UIBase;\r\n");
+                    sb.AppendFormat("        private EntityRef<YIUIComponent> u_UIBase;\r\n");
+                    sb.Append("        public YIUIComponent UIBase {get => u_UIBase; set => u_UIBase = value;}\r\n");
 
-                    sb.AppendFormat("        public EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
-                    sb.AppendFormat("        public YIUIWindowComponent UIWindow => u_UIWindow;\r\n");
+                    sb.AppendFormat("        private EntityRef<YIUIWindowComponent> u_UIWindow;\r\n");
+                    sb.Append("        public YIUIWindowComponent UIWindow { get => u_UIWindow; set => u_UIWindow = value;}\r\n");
 
-                    sb.AppendFormat("        public EntityRef<YIUIViewComponent> u_UIView;\r\n");
-                    sb.AppendFormat("        public YIUIViewComponent UIView => u_UIView;\r\n");
+                    sb.AppendFormat("        private EntityRef<YIUIViewComponent> u_UIView;\r\n");
+                    sb.Append("        public YIUIViewComponent UIView { get => u_UIView; set => u_UIView = value;}\r\n");
                     break;
                 default:
                     Debug.LogError($"新增类型未实现 {self.UICodeType}");

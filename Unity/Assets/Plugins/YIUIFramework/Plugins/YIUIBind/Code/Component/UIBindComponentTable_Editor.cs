@@ -4,140 +4,57 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
 namespace YIUIFramework
 {
+    
     //Editor
     public sealed partial class UIBindComponentTable
     {
+
+        public static Dictionary<Type, string> UITypeDefaultPrefix = new Dictionary<Type, string>()
+        {
+            {typeof(Transform),"Trans"},
+            {typeof(RectTransform),"Trans"},
+            {typeof(Text),"Txt"},
+            {typeof(Button),"Btn"},
+            {typeof(Image),"Img"},
+            {typeof(TextMeshProUGUI), "Txt"},
+            {typeof(Toggle), "Tog"},
+            {typeof(InputField), "Input"},
+        };
+        
         [OdinSerialize]
         [LabelText("所有绑定数据 编辑数据")]
         [Searchable]
         [HideReferenceObjectPicker]
         [PropertyOrder(-10)]
         [ShowIf("@UIOperationHelper.CommonShowIf()")]
+        [ListDrawerSettings(CustomAddFunction = nameof(CustomAddBindPair))]
+        [OnValueChanged(nameof(OnPairListChanged))]
         private List<UIBindPairData> m_AllBindPair = new List<UIBindPairData>();
 
-        [GUIColor(0, 1, 1)]
-        [LabelText("空名称自动设置")]
-        [SerializeField]
-        [HorizontalGroup("SetGroup")]
-        [PropertyOrder(-99)]
-        [ShowIf("@UIOperationHelper.CommonShowIf()")]
-        private bool m_AutoSetNullName = true;
-
-        [GUIColor(0, 1, 1)]
-        [LabelText("空名称额外添加类型后缀")]
-        [SerializeField]
-        [ShowIf("m_AutoSetNullName")]
-        [HorizontalGroup("SetGroup")]
-        [PropertyOrder(-99)]
-        [ShowIf("@UIOperationHelper.CommonShowIf()")]
-        private bool m_NullNameAddTypeName = true;
-
-        [GUIColor(1, 1, 0)]
-        [Button("自动检查", 30)]
-        [PropertyOrder(-100)]
-        [ShowIf("@UIOperationHelper.CommonShowIf()")]
-        public void AutoCheck()
+        private void CustomAddBindPair()
         {
-            if (!UIOperationHelper.CheckUIOperation(this)) return;
-
-            CheckAllBindName();
+            this.m_AllBindPair.Add(new UIBindPairData());
         }
 
-        /// <summary>
-        /// 检查所有绑定命名
-        /// 必须m_ 开头
-        /// 如果没用命名则使用对象的名字拼接
-        /// 会尝试强制修改
-        /// 如果还有同名则报错
-        /// </summary>
-        private void CheckAllBindName()
+        private void OnPairListChanged()
         {
-            m_AllBindDic.Clear();
-            if (m_AllBindPair == null || m_AllBindPair.Count < 1) return;
-
-            for (var i = 0; i < m_AllBindPair.Count; i++)
+            this.m_AllBindDic.Clear();
+            foreach (var pair in this.m_AllBindPair)
             {
-                var bindPair  = m_AllBindPair[i];
-                var oldName   = bindPair.Name;
-                var component = bindPair.Component;
-                if (component == null)
+                if (this.m_AllBindDic.ContainsKey(pair.Name))
                 {
-                    Logger.LogErrorContext(this, $"{name} 空对象  所以 {oldName} 已忽略");
-                    continue;
+                    Debug.LogError($"存在重复字段{pair.Name}");
+                    break;
                 }
-
-                var newName = oldName;
-
-                if (!oldName.CheckFirstName(NameUtility.ComponentName))
-                {
-                    if (string.IsNullOrEmpty(newName))
-                    {
-                        if (!m_AutoSetNullName)
-                        {
-                            continue;
-                        }
-
-                        if (component != null)
-                        {
-                            if (m_NullNameAddTypeName)
-                            {
-                                newName =
-                                    $"{NameUtility.FirstName}{NameUtility.ComponentName}{component.name}{component.GetType().Name}";
-                            }
-                            else
-                            {
-                                newName = $"{NameUtility.FirstName}{NameUtility.ComponentName}{component.name}";
-                            }
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        newName = $"{NameUtility.FirstName}{NameUtility.ComponentName}{oldName}";
-                    }
-                }
-
-                newName = newName.ChangeToBigName(NameUtility.ComponentName);
-
-                if (oldName != newName)
-                {
-                    bindPair.Name = newName;
-                }
-
-                if (string.IsNullOrEmpty(bindPair.Name))
-                {
-                    Logger.LogErrorContext(this, $"{name} 存在空名称 {bindPair.Component?.name} 已忽略");
-                    continue;
-                }
-
-                if (bindPair.Component == null)
-                {
-                    Logger.LogErrorContext(this, $"{name} 空对象  所以 {bindPair.Name} 已忽略");
-                    continue;
-                }
-
-                if (m_AllBindDic.ContainsValue(bindPair.Component))
-                {
-                    Logger.LogErrorContext(bindPair.Component, $"{name} 这个组件已经存在了 重复对象 {bindPair.Component.name} 已忽略");
-                    continue;
-                }
-
-                if (m_AllBindDic.ContainsKey(bindPair.Name))
-                {
-                    Logger.LogErrorContext(bindPair.Component, $"{name} 这个命名已经存在了 重复添加 {bindPair.Name} 已忽略");
-                    continue;
-                }
-
-                m_AllBindDic.Add(bindPair.Name, bindPair.Component);
+                this.m_AllBindDic.Add(pair.Name, pair.Component);
             }
         }
     }
@@ -154,7 +71,30 @@ namespace YIUIFramework
         public string Name ;
 
         [LabelText("对象")]
+        [OnValueChanged(nameof(AutoFillName))]
         public Component Component;
+
+        private void AutoFillName()
+        {
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                return;
+            }
+
+            this.Name = this.Component.gameObject.name;
+            var type = this.Component.GetType();
+            foreach (var kv in UIBindComponentTable.UITypeDefaultPrefix)
+            {
+                if (kv.Key.IsAssignableFrom(type))
+                {
+                    if (!this.Name.StartsWith(kv.Value))
+                    {
+                        this.Name = kv.Value + this.Name;
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
 #endif

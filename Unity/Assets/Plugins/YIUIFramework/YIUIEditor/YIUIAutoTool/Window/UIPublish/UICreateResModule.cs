@@ -35,16 +35,10 @@ namespace YIUIFramework.Editor
             var basePath          = $"{UIStaticHelper.UIProjectResPath}/{createName}";
             var prefabsPath       = $"{basePath}/{UIStaticHelper.UIPrefabs}";
             var spritesPath       = $"{basePath}/{UIStaticHelper.UISprites}";
-            var spritesAtlas1Path = $"{basePath}/{UIStaticHelper.UISprites}/{UIStaticHelper.UISpritesAtlas1}";
-            var atlasIgnorePath   = $"{basePath}/{UIStaticHelper.UISprites}/{UIStaticHelper.UIAtlasIgnore}";
-            var atlasPath         = $"{basePath}/{UIStaticHelper.UIAtlas}";
             var sourcePath        = $"{basePath}/{UIStaticHelper.UISource}";
 
             EditorHelper.CreateExistsDirectory(prefabsPath);
             EditorHelper.CreateExistsDirectory(spritesPath);
-            EditorHelper.CreateExistsDirectory(spritesAtlas1Path);
-            EditorHelper.CreateExistsDirectory(atlasIgnorePath);
-            EditorHelper.CreateExistsDirectory(atlasPath);
             EditorHelper.CreateExistsDirectory(sourcePath);
 
             MenuItemYIUIPanel.CreateYIUIPanelByPath(sourcePath, createName);

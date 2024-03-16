@@ -10,21 +10,21 @@ namespace ET.Client
     /// Date    2024.3.16
     /// Desc
     /// </summary>
-    [FriendOf(typeof(LoginPanelComponent))]
-    public static partial class LoginPanelComponentSystem
+    [FriendOf(typeof(PopLoadViewComponent))]
+    public static partial class PopLoadViewComponentSystem
     {
         [EntitySystem]
-        private static void YIUIInitialize(this LoginPanelComponent self)
-        {
-        }
-
-        [EntitySystem]
-        private static void Destroy(this LoginPanelComponent self)
+        private static void YIUIInitialize(this PopLoadViewComponent self)
         {
         }
         
         [EntitySystem]
-        private static async ETTask<bool> YIUIOpen(this LoginPanelComponent self)
+        private static void Destroy(this PopLoadViewComponent self)
+        {
+        }
+        
+        [EntitySystem]
+        private static async ETTask<bool> YIUIOpen(this PopLoadViewComponent self)
         {
             await ETTask.CompletedTask;
             return true;

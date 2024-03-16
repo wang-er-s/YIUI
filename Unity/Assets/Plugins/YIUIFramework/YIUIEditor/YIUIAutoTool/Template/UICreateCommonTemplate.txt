@@ -13,8 +13,6 @@ namespace ${Namespace}
     [YIUI(typeof(${ResName}Component))]
     public sealed partial class ${ResName}:${ResName}Base
     {
-        #region YIUIEvent开始
-        #endregion YIUIEvent结束
     }
 
     #region DefaultComponentSystem开始

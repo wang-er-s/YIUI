@@ -52,12 +52,8 @@ namespace YIUIFramework
         public const string UIPrefabsCN              = "预制";
         public const string UISprites                = "Sprites";
         public const string UISpritesCN              = "精灵";
-        public const string UIAtlas                  = "Atlas";
-        public const string UIAtlasCN                = "图集";
         public const string UISource                 = "Source";
         public const string UISourceCN               = "源文件";
-        public const string UIAtlasIgnore            = "AtlasIgnore"; //图集忽略文件夹名称
-        public const string UISpritesAtlas1          = "Atlas1";      //图集1 不需要华丽的取名 每个包内的自定义图集就按顺序就好 当然你也可以自定义其他
         public const string UIAllViewParentName      = "AllViewParent";
         public const string UIAllPopupViewParentName = "AllPopupViewParent";
         public const string UIYIUIPanelSourceName    = UIProjectName + UIPanelName + UISource;

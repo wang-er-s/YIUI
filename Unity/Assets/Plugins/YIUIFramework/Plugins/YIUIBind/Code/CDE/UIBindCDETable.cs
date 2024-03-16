@@ -24,6 +24,7 @@ namespace YIUIFramework
         #if UNITY_EDITOR
         [InlineButton("AddComponentTable", "Add")]
         [EnableIf("@UIOperationHelper.CommonShowIf()")]
+        [HideIf(nameof(IsSplitData))]
         #endif
         public UIBindComponentTable ComponentTable;
 
@@ -43,6 +44,7 @@ namespace YIUIFramework
         [PropertyOrder(1000)] //生成UI类时使用
         #if UNITY_EDITOR
         [ShowIf("@UIOperationHelper.CommonShowIf()")]
+        [HideIf(nameof(IsSplitData))]
         #endif
         internal List<UIBindCDETable> AllChildCdeTable = new List<UIBindCDETable>();
 
