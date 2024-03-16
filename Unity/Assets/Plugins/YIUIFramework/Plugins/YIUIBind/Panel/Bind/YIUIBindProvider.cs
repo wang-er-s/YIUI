@@ -62,7 +62,6 @@ namespace YIUIFramework
             #else
             var types = GetLogicTypesByDll();
             #endif
-            
             var binds = new List<YIUIBindVo>();
 
             foreach (var type in types)

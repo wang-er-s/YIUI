@@ -21,6 +21,10 @@ namespace YIUIFramework
         public RectTransform AllViewParent;
 
         [BoxGroup("通用界面", centerLabel: true)]
+        [LabelText("所有额外的View")]
+        public List<RectTransform> AllExtraView = new List<RectTransform>();
+
+        [BoxGroup("通用界面", centerLabel: true)]
         [LabelText("所有通用界面(已存在不创建的)")]
         public List<RectTransform> AllCommonView = new List<RectTransform>();
 

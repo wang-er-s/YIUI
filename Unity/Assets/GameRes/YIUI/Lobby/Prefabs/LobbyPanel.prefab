@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3509174235810677687}
   - component: {fileID: 6529014300043202661}
   - component: {fileID: 5739085531847352026}
-  - component: {fileID: 6169431036965684871}
   m_Layer: 5
   m_Name: LobbyPanel
   m_TagString: Untagged
@@ -35,7 +34,6 @@ RectTransform:
   - {fileID: 2003696664191729595}
   - {fileID: 463090141768562902}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -171,8 +169,6 @@ MonoBehaviour:
       Entry: 9
       Data: 3
   ComponentTable: {fileID: 0}
-  DataTable: {fileID: 0}
-  EventTable: {fileID: 6169431036965684871}
   PkgName: Lobby
   ResName: LobbyPanel
   UICodeType: 0
@@ -184,161 +180,6 @@ MonoBehaviour:
   ViewStackOption: 2
   CachePanelTime: 10
   Priority: 0
---- !u!114 &6169431036965684871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66388047756517120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286a297a42e64638b9035112147b4d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 6169431036965684871}
-    - {fileID: 4481942542704943698}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_EventDic
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[YIUIFramework.UIEventBase,
-        YIUIFramework]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: u_EventEnter
-    - Name: $v
-      Entry: 7
-      Data: 2|YIUIFramework.UITaskEventP0, YIUIFramework
-    - Name: m_EventName
-      Entry: 1
-      Data: u_EventEnter
-    - Name: AllEventParamType
-      Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[YIUIFramework.EUIEventParamType,
-        YIUIFramework]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: OnRemoveAction
-      Entry: 7
-      Data: 4|System.Action`1[[YIUIFramework.UIEventBase, YIUIFramework]], mscorlib
-    - Name: target
-      Entry: 10
-      Data: 0
-    - Name: declaringType
-      Entry: 7
-      Data: 5|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: YIUIFramework.UIBindEventTable, YIUIFramework
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: methodName
-      Entry: 1
-      Data: OnRemoveUIEvent
-    - Name: delegateType
-      Entry: 7
-      Data: 6|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: System.Action`1[[YIUIFramework.UIEventBase, YIUIFramework]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: signature
-      Entry: 7
-      Data: 7|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 8|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: YIUIFramework.UIEventBase, YIUIFramework
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: m_Binds
-      Entry: 7
-      Data: 9|System.Collections.Generic.List`1[[YIUIFramework.UIEventBind, YIUIFramework]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AllEventParamType
-      Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[YIUIFramework.EUIEventParamType,
-        YIUIFramework]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  AllEventParamType: 
 --- !u!1 &445201697164658575
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +210,6 @@ RectTransform:
   m_Children:
   - {fileID: 4426522357574517172}
   m_Father: {fileID: 3509174235810677687}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -407,7 +247,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8088438112272717600}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -488,7 +327,6 @@ RectTransform:
   m_Children:
   - {fileID: 8088438112272717600}
   m_Father: {fileID: 2003696664191729595}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -564,7 +402,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3509174235810677687}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -624,7 +461,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3509174235810677687}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -644,7 +480,6 @@ GameObject:
   - component: {fileID: 8265728668762446362}
   - component: {fileID: 8265630393216133500}
   - component: {fileID: 4394563764884288086}
-  - component: {fileID: 4481942542704943698}
   m_Layer: 5
   m_Name: EnterMap
   m_TagString: Untagged
@@ -666,7 +501,6 @@ RectTransform:
   m_Children:
   - {fileID: 3157439243849085410}
   m_Father: {fileID: 4426522357574517172}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -772,124 +606,3 @@ MonoBehaviour:
   scaleTime: 0
   popTime: 0
   ease: 24
---- !u!114 &4481942542704943698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8296904765485267606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543b9965e22a4bb882ba1493143e19f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 6169431036965684871}
-    - {fileID: 4481942542704943698}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: m_EventTable
-      Entry: 10
-      Data: 0
-    - Name: m_EventName
-      Entry: 1
-      Data: u_EventEnter
-    - Name: m_UIEvent
-      Entry: 7
-      Data: 0|YIUIFramework.UITaskEventP0, YIUIFramework
-    - Name: m_EventName
-      Entry: 1
-      Data: u_EventEnter
-    - Name: AllEventParamType
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[YIUIFramework.EUIEventParamType,
-        YIUIFramework]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: OnRemoveAction
-      Entry: 7
-      Data: 2|System.Action`1[[YIUIFramework.UIEventBase, YIUIFramework]], mscorlib
-    - Name: target
-      Entry: 10
-      Data: 0
-    - Name: declaringType
-      Entry: 7
-      Data: 3|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: YIUIFramework.UIBindEventTable, YIUIFramework
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: methodName
-      Entry: 1
-      Data: OnRemoveUIEvent
-    - Name: delegateType
-      Entry: 7
-      Data: 4|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: System.Action`1[[YIUIFramework.UIEventBase, YIUIFramework]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: signature
-      Entry: 7
-      Data: 5|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 6|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: YIUIFramework.UIEventBase, YIUIFramework
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: m_Binds
-      Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[YIUIFramework.UIEventBind, YIUIFramework]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  m_SkipWhenDrag: 0
-  m_Selectable: {fileID: 8265630393216133500}
-  m_BanLayerOption: 1

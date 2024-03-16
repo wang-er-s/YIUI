@@ -111,6 +111,9 @@ MonoBehaviour:
     - Name: AllViewParent
       Entry: 6
       Data: 
+    - Name: AllExtraView
+      Entry: 6
+      Data: 
     - Name: AllCommonView
       Entry: 7
       Data: 4|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],

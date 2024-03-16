@@ -36,7 +36,7 @@ namespace YIUIFramework
         [PropertyOrder(-10)]
         [ShowIf("@UIOperationHelper.CommonShowIf()")]
         [ListDrawerSettings(CustomAddFunction = nameof(CustomAddBindPair))]
-        [OnValueChanged(nameof(OnPairListChanged))]
+        [OnStateUpdate("@OnPairListChanged()")]
         private List<UIBindPairData> m_AllBindPair = new List<UIBindPairData>();
 
         private void CustomAddBindPair()
@@ -46,9 +46,11 @@ namespace YIUIFramework
 
         private void OnPairListChanged()
         {
+            if (this.m_AllBindDic == null) this.m_AllBindDic = new Dictionary<string, Component>();
             this.m_AllBindDic.Clear();
             foreach (var pair in this.m_AllBindPair)
             {
+                if(pair.Component == null) continue;
                 if (this.m_AllBindDic.ContainsKey(pair.Name))
                 {
                     Debug.LogError($"存在重复字段{pair.Name}");

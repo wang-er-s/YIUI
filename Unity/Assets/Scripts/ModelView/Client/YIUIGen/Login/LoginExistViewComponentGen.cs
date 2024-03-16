@@ -15,12 +15,12 @@ namespace ET.Client
         public const string PkgName = "Login";
         public const string ResName = "LoginExistView";
 
-        public EntityRef<YIUIComponent> u_UIBase;
-        public YIUIComponent UIBase => u_UIBase;
-        public EntityRef<YIUIWindowComponent> u_UIWindow;
-        public YIUIWindowComponent UIWindow => u_UIWindow;
-        public EntityRef<YIUIViewComponent> u_UIView;
-        public YIUIViewComponent UIView => u_UIView;
+        private EntityRef<YIUIComponent> u_UIBase;
+        public YIUIComponent UIBase {get => u_UIBase; set => u_UIBase = value;}
+        private EntityRef<YIUIWindowComponent> u_UIWindow;
+        public YIUIWindowComponent UIWindow { get => u_UIWindow; set => u_UIWindow = value;}
+        private EntityRef<YIUIViewComponent> u_UIView;
+        public YIUIViewComponent UIView { get => u_UIView; set => u_UIView = value;}
 
     }
 }

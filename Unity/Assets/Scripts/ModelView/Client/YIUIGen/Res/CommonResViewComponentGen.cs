@@ -10,10 +10,10 @@ namespace ET.Client
     /// 由YIUI工具自动创建 请勿修改
     /// </summary>
     [YIUI(EUICodeType.View)]
-    public partial class LoginLoadViewComponent: Entity, IDestroy, IAwake, IYIUIBind, IYIUIInitialize, IYIUIOpen
+    public partial class CommonResViewComponent: Entity, IDestroy, IAwake, IYIUIBind, IYIUIInitialize, IYIUIOpen
     {
-        public const string PkgName = "Login";
-        public const string ResName = "LoginLoadView";
+        public const string PkgName = "Res";
+        public const string ResName = "CommonResView";
 
         private EntityRef<YIUIComponent> u_UIBase;
         public YIUIComponent UIBase {get => u_UIBase; set => u_UIBase = value;}

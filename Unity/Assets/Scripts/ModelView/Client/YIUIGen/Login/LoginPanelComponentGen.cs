@@ -31,8 +31,8 @@ namespace ET.Client
         public YIUIWindowComponent UIWindow { get => u_UIWindow; set => u_UIWindow = value;}
         private EntityRef<YIUIPanelComponent> u_UIPanel;
         public YIUIPanelComponent UIPanel { get => u_UIPanel; set => u_UIPanel = value;}
-        public UnityEngine.UI.Button BtnLogin;
-        public UnityEngine.UI.Button BtnLogin2;
+        private EntityRef<ET.Client.CommonResViewComponent> u_UICommonResView;
+        public ET.Client.CommonResViewComponent UICommonResView {get => u_UICommonResView; set => u_UICommonResView = value;} 
         private EntityRef<ET.Client.LoginExistViewComponent> u_UILoginExistView;
         public ET.Client.LoginExistViewComponent UILoginExistView {get => u_UILoginExistView; set => u_UILoginExistView = value;} 
 
