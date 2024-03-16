@@ -104,6 +104,7 @@ namespace ET
         public ActorId(int process, int fiber)
         {
             this.Address = new Address(process, fiber);
+            // 默认1的意思是找Fiber的RootScene，因为RootScene的InstanceId为1
             this.InstanceId = 1;
         }
         
