@@ -16,7 +16,6 @@ namespace ET.Client
         [EntitySystem]
         private static void YIUIInitialize(this CommonResViewComponent self)
         {
-            Log.Error("Res Extra View 生命周期");
         }
         
         [EntitySystem]

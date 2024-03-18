@@ -248,7 +248,7 @@ MonoBehaviour:
     - Name: AllViewParent
       Entry: 10
       Data: 1
-    - Name: AllCommonView
+    - Name: AllExtraView
       Entry: 7
       Data: 4|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
         mscorlib
@@ -261,9 +261,22 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: AllCreateView
+    - Name: AllCommonView
       Entry: 7
       Data: 5|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AllCreateView
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
         mscorlib
     - Name: 
       Entry: 12
@@ -279,7 +292,7 @@ MonoBehaviour:
       Data: 2
     - Name: AllPopupView
       Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
+      Data: 7|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
         mscorlib
     - Name: 
       Entry: 12
@@ -300,8 +313,6 @@ MonoBehaviour:
       Entry: 6
       Data: 
   ComponentTable: {fileID: 0}
-  DataTable: {fileID: 0}
-  EventTable: {fileID: 0}
   PkgName: Main
   ResName: MainPanelSource
   UICodeType: 0

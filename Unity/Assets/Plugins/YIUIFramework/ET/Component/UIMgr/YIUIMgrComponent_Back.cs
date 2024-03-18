@@ -35,7 +35,7 @@ namespace ET.Client
                 {
                     continue;
                 }
-
+                
                 //防止多级时多次触发
                 switch (child.UIPanel.StackOption)
                 {

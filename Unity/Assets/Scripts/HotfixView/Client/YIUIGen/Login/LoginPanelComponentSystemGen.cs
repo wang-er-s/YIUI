@@ -36,6 +36,7 @@ namespace ET.Client
             self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
             self.UIPanel.Priority = 0;
 
+            self.BtnLogin = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Button>("BtnLogin");
             self.UICommonResView = self.UIBase.CDETable.FindUIOwner<ET.Client.CommonResViewComponent>("CommonResView");
             self.UILoginExistView = self.UIBase.CDETable.FindUIOwner<ET.Client.LoginExistViewComponent>("LoginExistView");
 

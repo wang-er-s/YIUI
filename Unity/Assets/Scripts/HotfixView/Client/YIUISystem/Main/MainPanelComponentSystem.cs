@@ -10,6 +10,7 @@ namespace ET.Client
         [EntitySystem]
         private static void YIUIInitialize(this MainPanelComponent self)
         {
+            self.BtnClose.onClick.AddListener(()=> self.UIPanel.Close());
         }
 
         [EntitySystem]
@@ -24,7 +25,5 @@ namespace ET.Client
             return true;
         }
 
-        #region YIUIEvent开始
-        #endregion YIUIEvent结束
     }
 }
