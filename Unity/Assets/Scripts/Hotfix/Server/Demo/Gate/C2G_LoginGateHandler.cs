@@ -18,7 +18,7 @@ namespace ET.Server
             }
             
             session.RemoveComponent<SessionAcceptTimeoutComponent>();
-
+            
             PlayerComponent playerComponent = root.GetComponent<PlayerComponent>();
             Player player = playerComponent.GetByAccount(account);
             if (player == null)

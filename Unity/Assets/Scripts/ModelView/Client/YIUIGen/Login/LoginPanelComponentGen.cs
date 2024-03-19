@@ -32,6 +32,8 @@ namespace ET.Client
         private EntityRef<YIUIPanelComponent> u_UIPanel;
         public YIUIPanelComponent UIPanel { get => u_UIPanel; set => u_UIPanel = value;}
         public UnityEngine.UI.Button BtnLogin;
+        public TMPro.TMP_InputField InputAccount;
+        public TMPro.TMP_InputField ImpntPassword;
         private EntityRef<ET.Client.CommonResViewComponent> u_UICommonResView;
         public ET.Client.CommonResViewComponent UICommonResView {get => u_UICommonResView; set => u_UICommonResView = value;} 
         private EntityRef<ET.Client.LoginExistViewComponent> u_UILoginExistView;

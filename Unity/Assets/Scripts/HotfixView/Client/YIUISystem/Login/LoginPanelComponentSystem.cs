@@ -20,7 +20,7 @@ namespace ET.Client
             self.UIPanel.OpenViewAsync<CommonResViewComponent>().Coroutine();
             self.BtnLogin.onClick.AddListener(() =>
             {
-                YIUIMgrComponent.Inst.OpenPanelAsync<MainPanelComponent>().Coroutine();
+                self.Login().Coroutine();
             });
         }
 
@@ -38,6 +38,13 @@ namespace ET.Client
             // YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
             return true;
         }
-        
+
+        private static async ETTask Login(this LoginPanelComponent self)
+        {
+            var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();
+            await LoginHelper.Login(self.Root(), self.InputAccount.text, self.ImpntPassword.text);
+            YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
+        }
+
     }
 }
