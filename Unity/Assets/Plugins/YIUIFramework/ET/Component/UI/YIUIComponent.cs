@@ -189,8 +189,6 @@ namespace ET.Client
 
         private void UIBaseStart()
         {
-            CDETable.UIBaseOnEnable  = UIBaseOnEnable;
-            CDETable.UIBaseOnDisable = UIBaseOnDisable;
         }
 
         private void UIInitialize()
@@ -204,6 +202,8 @@ namespace ET.Client
                     UIBaseOnEnable();
                 else
                     UIBaseOnDisable();
+                CDETable.UIBaseOnEnable  = UIBaseOnEnable;
+                CDETable.UIBaseOnDisable = UIBaseOnDisable;
             }
             catch (Exception e)
             {
