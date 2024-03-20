@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using YIUIFramework;
 using System.Collections.Generic;
 
@@ -26,15 +27,16 @@ namespace ET.Client
         
         private static void UIBind(this LobbyPanelComponent self)
         {
-            self.u_UIBase = self.GetParent<YIUIComponent>();
-            self.u_UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
-            self.u_UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
+            self.UIBase = self.GetParent<YIUIComponent>();
+            self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
+            self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
             self.UIWindow.WindowOption = EWindowOption.None;
             self.UIPanel.Layer = EPanelLayer.Panel;
-            self.UIPanel.PanelOption = EPanelOption.TimeCache;
+            self.UIPanel.PanelOption = EPanelOption.None;
             self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
             self.UIPanel.Priority = 0;
-            self.UIPanel.CachePanelTime = 10;
+
+            self.BtnEnterMap = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Button>("BtnEnterMap");
 
         }
     }

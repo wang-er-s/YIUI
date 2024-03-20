@@ -35,7 +35,7 @@ namespace ET.Client
             self.Dispose();
         }
 
-        public static async ETTask<long> LoginAsync(this ClientSenderComponent self, string account, string password)
+        public static async ETTask<NetClient2Main_Login> LoginAsync(this ClientSenderComponent self, string account, string password)
         {
             // 登录的时候创建NetClientFiber
             self.fiberId = await FiberManager.Instance.Create(SchedulerType.ThreadPool, 0, SceneType.NetClient, "");
@@ -46,7 +46,7 @@ namespace ET.Client
             main2NetClientLogin.Account = account;
             main2NetClientLogin.Password = password;
             NetClient2Main_Login response = await self.Root().GetComponent<ProcessInnerSender>().Call(self.netClientActorId, main2NetClientLogin) as NetClient2Main_Login;
-            return response.PlayerId;
+            return response;
         }
 
         public static void Send(this ClientSenderComponent self, IMessage message)

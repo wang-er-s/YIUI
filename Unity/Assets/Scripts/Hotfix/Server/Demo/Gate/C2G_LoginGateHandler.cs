@@ -17,6 +17,8 @@ namespace ET.Server
                 return;
             }
             
+            // 在NetComponentSystem.OnAccept 上，当连接后会添加这个组件，防止连接后什么也不干
+            // 我们这里在登录
             session.RemoveComponent<SessionAcceptTimeoutComponent>();
             
             PlayerComponent playerComponent = root.GetComponent<PlayerComponent>();

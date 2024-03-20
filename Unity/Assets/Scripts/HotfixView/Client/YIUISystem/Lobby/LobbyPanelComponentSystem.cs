@@ -10,6 +10,7 @@ namespace ET.Client
         [EntitySystem]
         private static void YIUIInitialize(this LobbyPanelComponent self)
         {
+            self.BtnEnterMap.onClick.AddListener(() => self.EnterMap().Coroutine());
         }
 
         [EntitySystem]
@@ -22,6 +23,13 @@ namespace ET.Client
         {
             await ETTask.CompletedTask;
             return true;
+        }
+        
+        public static async ETTask EnterMap(this LobbyPanelComponent self)
+        {
+            Scene root = self.Root();
+            await EnterMapHelper.EnterMapAsync(root);
+            self.UIPanel.Close();
         }
 
         #region YIUIEvent开始
