@@ -48,10 +48,6 @@ namespace YIUIFramework.Editor
             var splitData = cdeTable.PanelSplitData;
             var savePath  = $"{UIStaticHelper.UIProjectResPath}/{pkgName}/{UIStaticHelper.UIPrefabs}";
 
-            // 因为ExtraView要获取原预制体，再拷贝到创建之后的Panel上，所以需要直接使用LoadSource
-            CopyExtraViewPrefab(loadSource.GetComponent<UIBindCDETable>().PanelSplitData.AllExtraView,splitData.AllExtraView);
-            // 这个是把ExtraView的Prefab，再存到Source里
-            CopyExtraViewPrefab(loadSource.GetComponent<UIBindCDETable>().PanelSplitData.AllExtraView,oldSplitData.AllExtraView);
             AllViewSaveAsPrefabAsset(oldSplitData.AllCommonView, splitData.AllCommonView, savePath, true);
             AllViewSaveAsPrefabAsset(oldSplitData.AllCreateView, splitData.AllCreateView, savePath);
             AllViewSaveAsPrefabAsset(oldSplitData.AllPopupView, splitData.AllPopupView, savePath);
@@ -66,32 +62,6 @@ namespace YIUIFramework.Editor
 
             UnityTipsHelper.Show($"源数据拆分完毕");
             AssetDatabase.Refresh();
-        }
-
-        private static void CopyExtraViewPrefab(List<RectTransform> oldList,List<RectTransform> newList)
-        {
-            for (var i = 0; i < newList.Count; i++)
-            {
-                var viewParent = newList[i];
-                var oldViewParent = oldList[i];
-                if (oldViewParent.childCount != 1)
-                {
-                    Debug.LogError($"{viewParent.name}下面有不是一个预制体");
-                    continue;
-                }
-
-                var prefab = oldViewParent.GetChild(0);
-                if (!PrefabUtility.IsAnyPrefabInstanceRoot(prefab.gameObject))
-                {
-                    Debug.LogError($"{viewParent.name}下面的不是预制体");
-                    continue;
-                }
-
-                Object.DestroyImmediate(viewParent.GetChild(0).gameObject);
-                var newPrefab = (GameObject)PrefabUtility.InstantiatePrefab(
-                    AssetDatabase.LoadAssetAtPath<GameObject>(PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(prefab.gameObject)));
-                newPrefab.transform.SetParent(viewParent);
-            }
         }
 
         private static void AllViewSaveAsPrefabAsset(List<RectTransform> oldList,  List<RectTransform> newList,

@@ -134,8 +134,10 @@ namespace ET.Server
             }
         }
 
-        // 发给不会改变位置的actorlocation用这个，这种actor消息不会阻塞发送队列，性能更高，发送过去找不到actor不会重试
-        // 发送过去找不到actor不会重试,用此方法，你得保证actor提前注册好了location
+        /// <summary>
+        /// 发给不会改变位置的actorlocation用这个，这种actor消息不会阻塞发送队列，性能更高，发送过去找不到actor不会重试
+        /// 发送过去找不到actor不会重试,用此方法，你得保证actor提前注册好了location
+        /// </summary>
         public static async ETTask<IResponse> Call(this MessageLocationSenderOneType self, long entityId, IRequest request)
         {
             MessageLocationSender messageLocationSender = self.GetOrCreate(entityId);
@@ -172,11 +174,17 @@ namespace ET.Server
             return await root.GetComponent<MessageSender>().Call(messageLocationSender.ActorId, request);
         }
 
+        /// <summary>
+        /// 发给会改变位置的actorlocation用这个，发送过去找不到actor每500ms重试一次
+        /// </summary>
         public static void Send(this MessageLocationSenderOneType self, long entityId, ILocationMessage message)
         {
             self.Call(entityId, message).Coroutine();
         }
 
+        /// <summary>
+        /// 发给会改变位置的actorlocation用这个，发送过去找不到actor每500ms重试一次
+        /// </summary>
         public static async ETTask<IResponse> Call(this MessageLocationSenderOneType self, long entityId, ILocationRequest iRequest)
         {
             MessageLocationSender messageLocationSender = self.GetOrCreate(entityId);

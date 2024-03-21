@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ET.Client
 {
-    [FriendOf(typeof (TextTipsViewComponent))]
+    [FriendOf(typeof(TextTipsViewComponent))]
     public static partial class TextTipsViewComponentSystem
     {
         [EntitySystem]
@@ -39,7 +39,6 @@ namespace ET.Client
             await self.Root().GetComponent<TimerComponent>().WaitAsync((long)(self.u_ComAnimation.clip.length * 1000));
             await TipsHelper.CloseTipsView(self);
         }
-
         #region YIUIEvent开始
 
         #endregion YIUIEvent结束

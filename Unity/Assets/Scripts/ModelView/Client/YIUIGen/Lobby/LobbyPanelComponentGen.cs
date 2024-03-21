@@ -22,6 +22,8 @@ namespace ET.Client
         private EntityRef<YIUIPanelComponent> u_UIPanel;
         public YIUIPanelComponent UIPanel { get => u_UIPanel; set => u_UIPanel = value;}
         public UnityEngine.UI.Button BtnEnterMap;
+        private EntityRef<ET.Client.CurrencyTitleCommonComponent> u_UICurrencyTitleView;
+        public ET.Client.CurrencyTitleCommonComponent UICurrencyTitleView {get => u_UICurrencyTitleView; set => u_UICurrencyTitleView = value;} 
 
     }
 }

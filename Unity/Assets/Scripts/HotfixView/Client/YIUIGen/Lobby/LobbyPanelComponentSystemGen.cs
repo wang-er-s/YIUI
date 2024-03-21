@@ -37,6 +37,7 @@ namespace ET.Client
             self.UIPanel.Priority = 0;
 
             self.BtnEnterMap = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.Button>("BtnEnterMap");
+            self.UICurrencyTitleView = self.UIBase.CDETable.FindUIOwner<ET.Client.CurrencyTitleCommonComponent>("CurrencyTitleView");
 
         }
     }

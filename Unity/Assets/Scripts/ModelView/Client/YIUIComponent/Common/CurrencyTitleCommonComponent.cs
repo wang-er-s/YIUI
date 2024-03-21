@@ -7,10 +7,10 @@ namespace ET.Client
 {
     /// <summary>
     /// Author  YIUI
-    /// Date    2024.3.16
+    /// Date    2024.3.21
     /// Desc
     /// </summary>
-    public partial class CommonResViewComponent: Entity
+    public partial class CurrencyTitleCommonComponent: Entity
     {
 
     }

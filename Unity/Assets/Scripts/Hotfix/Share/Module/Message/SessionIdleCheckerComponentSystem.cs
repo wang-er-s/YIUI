@@ -34,7 +34,11 @@ namespace ET
             self.Root().GetComponent<TimerComponent>()?.Remove(ref self.RepeatedTimer);
         }
 
+#if UNITY_EDITOR
+        private const int CheckInteral = 200000;
+#else
         private const int CheckInteral = 2000;
+#endif
 
         private static void Check(this SessionIdleCheckerComponent self)
         {

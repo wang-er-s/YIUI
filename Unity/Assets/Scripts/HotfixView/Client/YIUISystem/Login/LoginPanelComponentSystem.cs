@@ -16,8 +16,6 @@ namespace ET.Client
         [EntitySystem]
         private static void YIUIInitialize(this LoginPanelComponent self)
         {
-            Log.Info($"Init");
-            self.UIPanel.OpenViewAsync<CommonResViewComponent>().Coroutine();
             self.BtnLogin.onClick.AddListener(() =>
             {
                 self.Login().Coroutine();
@@ -28,14 +26,11 @@ namespace ET.Client
         private static void Destroy(this LoginPanelComponent self)
         {
         }
-        
+
         [EntitySystem]
         private static async ETTask<bool> YIUIOpen(this LoginPanelComponent self)
         {
-            Log.Info($"Open");
-            // var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();
-            // await LoginHelper.Login(self.Root(), self.Account, self.Password);
-            // YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
+            await ETTask.CompletedTask;
             return true;
         }
 
@@ -45,6 +40,5 @@ namespace ET.Client
             await LoginHelper.Login(self.Root(), self.InputAccount.text, self.ImpntPassword.text);
             YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
         }
-
     }
 }

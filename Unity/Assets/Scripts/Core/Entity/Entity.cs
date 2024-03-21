@@ -288,6 +288,19 @@ namespace ET
             return this.Parent as T;
         }
 
+        /// <summary>
+        /// 为什么有了InstanceId还要有Id
+        /// 因为InstanceId每次创建Entity都会创建新的
+        /// Id是为了存储在定位服务那边，在不同fiber之间传送entity时
+        /// 也会把id给序列化，所以传送之后这个Entity的id还是不会变的
+        /// 在传送之后通过这个id和新创建的instanceId来更新定位服务自己的坐标
+        ///
+        /// 我们想要给某个Entity发送一个Actor消息
+        /// 就需要知道这个Entity的Adress和Id
+        /// 来通过定位服务再找到InstanceId，再发送消息
+        /// 如果这个时候只有InstanceId，那么发送方没有一个唯一id来标识这个Entity
+        /// 就找不到传送之后的这个Entity的InstanceId来发送消息
+        /// </summary>
         [BsonIgnoreIfDefault]
         [BsonDefaultValue(0L)]
         [BsonElement]

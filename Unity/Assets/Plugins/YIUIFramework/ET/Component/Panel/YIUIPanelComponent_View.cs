@@ -43,8 +43,6 @@ namespace ET.Client
             m_ViewParent.Clear();
             m_PanelSplitData = this.UIBase.CDETable.PanelSplitData;
             CreateCommonView();
-            CreateExtraView();
-            AddViewParent(m_PanelSplitData.AllExtraView);
             AddViewParent(m_PanelSplitData.AllCommonView);
             AddViewParent(m_PanelSplitData.AllCreateView);
             AddViewParent(m_PanelSplitData.AllPopupView);
@@ -59,42 +57,6 @@ namespace ET.Client
             }
         }
         
-        private void CreateExtraView()
-        {
-            foreach (var commonParentView in m_PanelSplitData.AllExtraView)
-            {
-                var viewName = commonParentView.name.Replace(UIStaticHelper.UIParentName, "");
-
-                //通用view的名称是不允许修改的 如果修改了 那么就创建一个新的
-                var viewTsf = commonParentView.FindChildByName(viewName);
-                if (viewTsf == null)
-                {
-                    Debug.LogError($"{viewName} 当前通用View 不存在于父级下 所以无法自动创建 将会动态创建");
-                    continue;
-                }
-
-                var data = YIUIBindHelper.GetBindVoByResName(viewName);
-                if (data == null) return;
-                var vo = data.Value;
-                if (vo.CodeType != EUICodeType.View)
-                {
-                    Log.Error($"打开错误必须是一个view类型");
-                    return;
-                }
-
-                //查看本地是否已经创建
-                var view = this.UIBase.CDETable.FindUIOwner<Entity>(viewName);
-
-                //如果没有则通用重新创建
-                view ??= YIUIFactory.CreateByObjVo(vo, viewTsf.gameObject, this.UIBase.OwnerUIEntity);
-
-                if (view != null)
-                {
-                    m_ExistView.Add(viewName, view);
-                }
-            }
-        }
-
         private void CreateCommonView()
         {
             foreach (var commonParentView in m_PanelSplitData.AllCommonView)
