@@ -27,8 +27,8 @@ namespace ET.Client
         
         public static async ETTask EnterMap(this LobbyPanelComponent self)
         {
-            // Scene root = self.Root();
-            // await EnterMapHelper.EnterMapAsync(root);
+            Scene root = self.Root();
+            await EnterMapHelper.EnterMapAsync(root);
             self.UIPanel.Close();
             await ETTask.CompletedTask;
         }
