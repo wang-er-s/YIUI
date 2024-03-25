@@ -1153,6 +1153,27 @@ namespace ET
         }
     }
 
+    [MemoryPackable]
+    [Message(OuterMessage.R2C_Dissconnect)]
+    public partial class R2C_Dissconnect : MessageObject, IMessage
+    {
+        public static R2C_Dissconnect Create(bool isFromPool = false)
+        {
+            return ObjectPool.Instance.Fetch(typeof(R2C_Dissconnect), isFromPool) as R2C_Dissconnect;
+        }
+
+        public override void Dispose()
+        {
+            if (!this.IsFromPool)
+            {
+                return;
+            }
+
+            
+            ObjectPool.Instance.Recycle(this);
+        }
+    }
+
     public static class OuterMessage
     {
         public const ushort HttpGetRouterResponse = 10002;
@@ -1191,5 +1212,6 @@ namespace ET
         public const ushort M2C_TransferMap = 10035;
         public const ushort C2G_Benchmark = 10036;
         public const ushort G2C_Benchmark = 10037;
+        public const ushort R2C_Dissconnect = 10038;
     }
 }

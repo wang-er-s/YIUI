@@ -16,6 +16,8 @@ namespace ET.Client
                 return;
             }
 
+            Log.Debug("登录成功");
+            string token = response.Token;
             root.GetComponent<PlayerComponent>().MyId = response.PlayerId;
             
             await EventSystem.Instance.PublishAsync(root, new LoginFinish());

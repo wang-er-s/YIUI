@@ -249,3 +249,8 @@ message G2C_Benchmark // ISessionResponse
 	int32 Error = 2;
 	string Message = 3;
 }
+
+message R2C_Dissconnect // IMessage
+{
+	
+}

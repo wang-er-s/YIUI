@@ -7,7 +7,7 @@
         GM,
     }
 
-    [ChildOf(typeof(AccountInfosComponent))]
+    [ChildOf(typeof(Session))]
     public class AccountInfo : Entity, IAwake
     {
         public string AccountName;

@@ -16,5 +16,7 @@ namespace ET
 
         public const int Err_NetworkError = 200001;
         public const int Err_AccountError = 200002;
+        public const int Err_RequestRepeatedly = 200003;
+        public const int Err_AccountInBlackList = 200004;
     }
 }

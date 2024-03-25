@@ -26,8 +26,7 @@ namespace ET.Server
                 var accountInfos = await zoneDb.Query<AccountInfo>(c => c.AccountName == request.Account);
                 if (accountInfos.Count <= 0)
                 {
-                    var accountInfosComponent = session.GetComponent<AccountInfosComponent>() ?? session.AddComponent<AccountInfosComponent>();
-                    var accountInfo = accountInfosComponent.AddChild<AccountInfo>();
+                    var accountInfo = session.AddChild<AccountInfo>();
                     accountInfo.AccountName = request.Account;
                     accountInfo.Password = request.Password;
                     accountInfo.CreateTime = TimeInfo.Instance.ServerNow();

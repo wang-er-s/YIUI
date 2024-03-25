@@ -5,6 +5,6 @@ namespace ET.Server
     [ComponentOf(typeof(Scene))]
     public class AccountSessionsComponent : Entity, IAwake, IDestroy
     {
-        public Dictionary<long, long> Account2Session;
+        public Dictionary<string, EntityRef<Session>> Account2Session;
     }
 }

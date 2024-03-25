@@ -10,7 +10,7 @@ namespace ET.Server
         [EntitySystem]
         private static void Awake(this ET.Server.AccountSessionsComponent self)
         {
-            self.Account2Session = new Dictionary<long, long>();
+            self.Account2Session = new Dictionary<string, EntityRef<Session>>();
         }
 
         [EntitySystem]
@@ -19,19 +19,19 @@ namespace ET.Server
             self.Account2Session.Clear();
         }
 
-        private static void Add(this AccountSessionsComponent self, long accountId, long sessionInsId)
+        public static void Add(this AccountSessionsComponent self, string accountName, Session session)
         {
-            self.Account2Session[accountId] = sessionInsId;
+            self.Account2Session[accountName] = session;
         }
 
-        private static void Remove(this AccountSessionsComponent self, long accountId)
+        public static void Remove(this AccountSessionsComponent self, string accountName)
         {
-            self.Account2Session.Remove(accountId);
+            self.Account2Session.Remove(accountName);
         }
 
-        private static long Get(this AccountSessionsComponent self, long accountId)
+        public static Session Get(this AccountSessionsComponent self, string accountName)
         {
-            self.Account2Session.TryGetValue(accountId, out var result);
+            self.Account2Session.TryGetValue(accountName, out var result);
             return result;
         }
     }
