@@ -26,5 +26,7 @@ namespace ET
             get;
             set;
         }
+
+        void Clear();
     }
 }

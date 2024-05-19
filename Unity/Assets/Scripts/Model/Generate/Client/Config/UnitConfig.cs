@@ -62,8 +62,7 @@ namespace ET
         /// </summary>
         public readonly int AI;
 
-        public AIConfig AI_Ref { get; private set; }
-
+		public AIConfig AI_Ref { get; private set; }
 
         public const int __ID__ = -568528378;
         public override int GetTypeId() => __ID__;

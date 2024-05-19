@@ -1,0 +1,30 @@
+<module name="">
+	<bean name="BlockItemConfig">
+		<var name="ID" type="int" />
+		<var name="PrefabPath" type="string#path=unity" />
+        <var name="Size" type="_int2" />
+		<var name="CellIndexes" type="list,_int2" />
+		<var name="CellIds" type="list,int" />
+		<var name="BlockType" type="int" />
+	</bean>
+	<bean name="BlockCellConfig">
+		<var name="ID" type="int" />
+		<var name="Hp" type="int" />
+		<var name="PrefabPath" type="list,(string#path=unity)" />
+		<var name="Colors" type="list,int" />
+	</bean>
+	<bean name="BlockSceneConfig">
+		<var name="ID" type="int" />
+		<var name="PrefabPath" type="string#path=unity" />
+		<var name="CellPos" type="list,_int2" />
+		<var name="CellIds" type="list,int" />
+	</bean>
+	<bean name="BlockLevelConfig">
+		<var name="ID" type="int" />
+		<var name="SceneId" type="int" />
+	</bean>
+	<table name="BlockItemConfigCategory" value="BlockItemConfig" input="../Json/BlockConfig/*@ItemData.json" />
+	<table name="BlockCellConfigCategory" value="BlockCellConfig" input="../Json/BlockConfig/*@CellData.json" />
+	<table name="BlockSceneConfigCategory" value="BlockSceneConfig" input="../Json/BlockConfig/*@SceneData.json" />
+	<table name="BlockLevelConfigCategory" value="BlockLevelConfig" input="../Json/BlockConfig/*@LevelData.json" />
+</module>

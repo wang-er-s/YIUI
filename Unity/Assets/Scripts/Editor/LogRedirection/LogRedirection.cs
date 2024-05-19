@@ -22,6 +22,7 @@ namespace ET
                 return false;
             }
 
+
             Regex logFileRegex = new(@"((Log\.cs)|(UnityLogger\.cs)|(YooLogger\.cs))");
             string codePath = AssetDatabase.GetAssetPath(instanceID);
             if (logFileRegex.IsMatch(codePath))
@@ -34,8 +35,8 @@ namespace ET
                     OpenIDE(hrefMath.Groups[1].Value, int.Parse(hrefMath.Groups[2].Value));
                     return true;
                 }
-                
-                Match stackLineMatch = Regex.Match(GetStackTrace(), @"\(at (.+):([0-9]+)\)");
+
+                Match stackLineMatch = Regex.Match(content, @"\(at (.+):([0-9]+)\)");
                 while (stackLineMatch.Success)
                 {
                     codePath = stackLineMatch.Groups[1].Value;
@@ -45,10 +46,11 @@ namespace ET
                         OpenIDE(codePath, matchLine);
                         return true;
                     }
+
                     stackLineMatch = stackLineMatch.NextMatch();
                 }
             }
-            
+
             return false;
         }
 

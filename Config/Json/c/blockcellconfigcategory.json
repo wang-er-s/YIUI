@@ -1,0 +1,94 @@
+[
+  {
+    "ID": 2,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/CellPink.prefab"
+    ],
+    "Colors": [
+      5
+    ]
+  },
+  {
+    "ID": 1,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/CellEmpty.prefab"
+    ],
+    "Colors": [
+      0
+    ]
+  },
+  {
+    "ID": 3,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/CellRed.prefab"
+    ],
+    "Colors": [
+      1
+    ]
+  },
+  {
+    "ID": 4,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/CellGreen.prefab"
+    ],
+    "Colors": [
+      2
+    ]
+  },
+  {
+    "ID": 5,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/Grass0.prefab"
+    ],
+    "Colors": [
+      0
+    ]
+  },
+  {
+    "ID": 6,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/CellBlue.prefab"
+    ],
+    "Colors": [
+      3
+    ]
+  },
+  {
+    "ID": 7,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/CellYellow.prefab"
+    ],
+    "Colors": [
+      4
+    ]
+  },
+  {
+    "ID": 8,
+    "Hp": 2,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/Wood0.prefab",
+      "Assets/Bundles/Block/Cell/Wood1.prefab"
+    ],
+    "Colors": [
+      0,
+      0
+    ]
+  },
+  {
+    "ID": 9,
+    "Hp": 1,
+    "PrefabPath": [
+      "Assets/Bundles/Block/Cell/RockXY.prefab"
+    ],
+    "Colors": [
+      0
+    ]
+  }
+]

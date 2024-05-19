@@ -42,6 +42,7 @@ namespace ET
 
         public void Recycle(object obj)
         {
+            if (obj == null) return;
             if (obj is IPool p)
             {
                 if (!p.IsFromPool)

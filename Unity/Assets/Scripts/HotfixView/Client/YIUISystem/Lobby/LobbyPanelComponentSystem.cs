@@ -28,7 +28,6 @@ namespace ET.Client
         public static async ETTask EnterMap(this LobbyPanelComponent self)
         {
             Scene root = self.Root();
-            await EnterMapHelper.EnterMapAsync(root);
             self.UIPanel.Close();
             await ETTask.CompletedTask;
         }
@@ -38,7 +37,6 @@ namespace ET.Client
         private static async ETTask OnEventEnterAction(this LobbyPanelComponent self)
         {
             var banId = YIUIMgrComponent.Inst.BanLayerOptionForever();
-            await EnterMapHelper.EnterMapAsync(self.Root());
             YIUIMgrComponent.Inst.RecoverLayerOptionForever(banId);
             self.UIPanel.Close(false,true);
         }

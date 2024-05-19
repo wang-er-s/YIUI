@@ -38,6 +38,13 @@ namespace ET
             CoroutineLockQueueType coroutineLockQueueType = self.GetChild<CoroutineLockQueueType>(coroutineLockType) ?? self.AddChildWithId<CoroutineLockQueueType>(coroutineLockType);
             return await coroutineLockQueueType.Wait(key, time);
         }
+        
+        public static bool Contains(this CoroutineLockComponent self, int coroutineLockType, long key)
+        {
+            CoroutineLockQueueType coroutineLockQueueType = self.GetChild<CoroutineLockQueueType>(coroutineLockType);
+            if (coroutineLockQueueType == null) return false;
+            return coroutineLockQueueType.Get(key) != null;
+        }
 
         private static void Notify(this CoroutineLockComponent self, int coroutineLockType, long key, int level)
         {

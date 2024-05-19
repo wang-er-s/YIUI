@@ -54,7 +54,7 @@ namespace ET
 
 		private void OnApplicationQuit()
 		{
-			World.Instance.Dispose();
+			// World.Instance.Dispose();
 		}
 	}
 	

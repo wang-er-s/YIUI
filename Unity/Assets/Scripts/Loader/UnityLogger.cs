@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ET
@@ -27,9 +28,9 @@ namespace ET
 
         public void Error(string msg)
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             msg = Msg2LinkStackMsg(msg);
-            #endif
+#endif
             UnityEngine.Debug.LogError(msg);
         }
 

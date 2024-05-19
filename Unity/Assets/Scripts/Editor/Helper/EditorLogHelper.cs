@@ -52,7 +52,9 @@ namespace ET
 
         private static void DestroyLog()
         {
-            World.Instance.Dispose();
+            Logger.Instance?.Dispose();
+            Options.Instance?.Dispose();
+            // World.Instance.Dispose();
         }
     }
 }

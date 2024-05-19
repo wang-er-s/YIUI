@@ -20,5 +20,24 @@ namespace ET
 
             return types;
         }
+
+#if UNITY_EDITOR
+        [StaticField]
+        public static Dictionary<string, Assembly> name2Assembly = new Dictionary<string, Assembly>();
+
+        static AssemblyHelper()
+        {
+            foreach (Assembly assembly in System.AppDomain.CurrentDomain.GetAssemblies())
+            {
+                name2Assembly.Add(assembly.GetName().Name, assembly);
+            }
+        }
+        
+        public static Assembly GetAssembly(string name)
+        {
+            name2Assembly.TryGetValue(name, out var result);
+            return result;
+        }
+#endif
     }
 }

@@ -55,6 +55,10 @@ namespace ET
             }
         }
 
+        void IPool.Clear()
+        {
+        }
+
         [BsonIgnore]
         protected bool IsRegister
         {

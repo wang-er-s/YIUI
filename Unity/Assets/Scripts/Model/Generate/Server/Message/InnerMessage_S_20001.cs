@@ -38,65 +38,6 @@ namespace ET
     }
 
     [MemoryPackable]
-    [Message(InnerMessage.M2A_Reload)]
-    [ResponseType(nameof(A2M_Reload))]
-    public partial class M2A_Reload : MessageObject, IRequest
-    {
-        public static M2A_Reload Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(M2A_Reload), isFromPool) as M2A_Reload;
-        }
-
-        [MemoryPackOrder(0)]
-        public int RpcId { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.RpcId = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
-    [Message(InnerMessage.A2M_Reload)]
-    public partial class A2M_Reload : MessageObject, IResponse
-    {
-        public static A2M_Reload Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(A2M_Reload), isFromPool) as A2M_Reload;
-        }
-
-        [MemoryPackOrder(0)]
-        public int RpcId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public int Error { get; set; }
-
-        [MemoryPackOrder(2)]
-        public string Message { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.RpcId = default;
-            this.Error = default;
-            this.Message = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
     [Message(InnerMessage.G2G_LockRequest)]
     [ResponseType(nameof(G2G_LockResponse))]
     public partial class G2G_LockRequest : MessageObject, IRequest
@@ -727,77 +668,6 @@ namespace ET
     }
 
     [MemoryPackable]
-    [Message(InnerMessage.M2M_UnitTransferRequest)]
-    [ResponseType(nameof(M2M_UnitTransferResponse))]
-    public partial class M2M_UnitTransferRequest : MessageObject, IRequest
-    {
-        public static M2M_UnitTransferRequest Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(M2M_UnitTransferRequest), isFromPool) as M2M_UnitTransferRequest;
-        }
-
-        [MemoryPackOrder(0)]
-        public int RpcId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public ActorId OldActorId { get; set; }
-
-        [MemoryPackOrder(2)]
-        public byte[] Unit { get; set; }
-
-        [MemoryPackOrder(3)]
-        public List<byte[]> Entitys { get; set; } = new();
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.RpcId = default;
-            this.OldActorId = default;
-            this.Unit = default;
-            this.Entitys.Clear();
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
-    [Message(InnerMessage.M2M_UnitTransferResponse)]
-    public partial class M2M_UnitTransferResponse : MessageObject, IResponse
-    {
-        public static M2M_UnitTransferResponse Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(M2M_UnitTransferResponse), isFromPool) as M2M_UnitTransferResponse;
-        }
-
-        [MemoryPackOrder(0)]
-        public int RpcId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public int Error { get; set; }
-
-        [MemoryPackOrder(2)]
-        public string Message { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.RpcId = default;
-            this.Error = default;
-            this.Message = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
     [Message(InnerMessage.R2L_LoginAccountRequest)]
     [ResponseType(nameof(L2R_LoginAccountResponse))]
     public partial class R2L_LoginAccountRequest : MessageObject, IRequest
@@ -863,29 +733,25 @@ namespace ET
     public static class InnerMessage
     {
         public const ushort ObjectQueryRequest = 20002;
-        public const ushort M2A_Reload = 20003;
-        public const ushort A2M_Reload = 20004;
-        public const ushort G2G_LockRequest = 20005;
-        public const ushort G2G_LockResponse = 20006;
-        public const ushort G2G_LockReleaseRequest = 20007;
-        public const ushort G2G_LockReleaseResponse = 20008;
-        public const ushort ObjectAddRequest = 20009;
-        public const ushort ObjectAddResponse = 20010;
-        public const ushort ObjectLockRequest = 20011;
-        public const ushort ObjectLockResponse = 20012;
-        public const ushort ObjectUnLockRequest = 20013;
-        public const ushort ObjectUnLockResponse = 20014;
-        public const ushort ObjectRemoveRequest = 20015;
-        public const ushort ObjectRemoveResponse = 20016;
-        public const ushort ObjectGetRequest = 20017;
-        public const ushort ObjectGetResponse = 20018;
-        public const ushort R2G_GetLoginKey = 20019;
-        public const ushort G2R_GetLoginKey = 20020;
-        public const ushort G2M_SessionDisconnect = 20021;
-        public const ushort ObjectQueryResponse = 20022;
-        public const ushort M2M_UnitTransferRequest = 20023;
-        public const ushort M2M_UnitTransferResponse = 20024;
-        public const ushort R2L_LoginAccountRequest = 20025;
-        public const ushort L2R_LoginAccountResponse = 20026;
+        public const ushort G2G_LockRequest = 20003;
+        public const ushort G2G_LockResponse = 20004;
+        public const ushort G2G_LockReleaseRequest = 20005;
+        public const ushort G2G_LockReleaseResponse = 20006;
+        public const ushort ObjectAddRequest = 20007;
+        public const ushort ObjectAddResponse = 20008;
+        public const ushort ObjectLockRequest = 20009;
+        public const ushort ObjectLockResponse = 20010;
+        public const ushort ObjectUnLockRequest = 20011;
+        public const ushort ObjectUnLockResponse = 20012;
+        public const ushort ObjectRemoveRequest = 20013;
+        public const ushort ObjectRemoveResponse = 20014;
+        public const ushort ObjectGetRequest = 20015;
+        public const ushort ObjectGetResponse = 20016;
+        public const ushort R2G_GetLoginKey = 20017;
+        public const ushort G2R_GetLoginKey = 20018;
+        public const ushort G2M_SessionDisconnect = 20019;
+        public const ushort ObjectQueryResponse = 20020;
+        public const ushort R2L_LoginAccountRequest = 20021;
+        public const ushort L2R_LoginAccountResponse = 20022;
     }
 }

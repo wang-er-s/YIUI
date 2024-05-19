@@ -1,0 +1,20 @@
+[
+  {
+    "ID": 1,
+    "PrefabPath": "Assets/Bundles/Block/Canvas/1.prefab",
+    "CellPos": [
+      {
+        "x": 1,
+        "y": 0
+      },
+      {
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "CellIds": [
+      1,
+      3
+    ]
+  }
+]

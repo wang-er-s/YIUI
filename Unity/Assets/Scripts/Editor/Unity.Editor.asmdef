@@ -13,10 +13,11 @@
         "Unity.ModelView",
         "Unity.Hotfix",
         "Unity.HotfixView",
-        "ToolbarExtension.Editor"
+        "CatJson"
     ],
     "includePlatforms": [
-        "Editor"
+        "Editor",
+        "XboxOne"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": true,

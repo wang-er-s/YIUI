@@ -51,6 +51,9 @@ namespace ET
         // 线程安全
         public long ClientNow()
         {
+#if UNITY_EDITOR
+            return (long)(UnityEngine.Time.time * 1000);
+#endif
             return (DateTime.UtcNow.Ticks - this.dt1970.Ticks) / 10000;
         }
         

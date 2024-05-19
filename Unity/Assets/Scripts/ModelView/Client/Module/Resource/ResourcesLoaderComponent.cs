@@ -49,7 +49,7 @@ namespace ET.Client
             }
         }
 
-        public static async ETTask<T> LoadAssetAsync<T>(this ResourcesLoaderComponent self, string location) where T : UnityEngine.Object
+        public static async ETTask<T> LoadAsset<T>(this ResourcesLoaderComponent self, string location) where T : UnityEngine.Object
         {
             using CoroutineLock coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.ResourcesLoader, location.GetHashCode());
 
@@ -57,7 +57,7 @@ namespace ET.Client
             if (!self.handlers.TryGetValue(location, out handler))
             {
                 handler = self.package.LoadAssetAsync<T>(location);
-
+                
                 await handler.Task;
 
                 self.handlers.Add(location, handler);
@@ -66,7 +66,57 @@ namespace ET.Client
             return (T)((AssetHandle)handler).AssetObject;
         }
 
-        public static async ETTask<Dictionary<string, T>> LoadAllAssetsAsync<T>(this ResourcesLoaderComponent self, string location) where T : UnityEngine.Object
+        public static IProgressResult<float,T> LoadAssetProgress<T>(this ResourcesLoaderComponent self, string location) where T :UnityEngine.Object
+        {
+            if (self.loadingProgress.TryGetValue(location, out var result))
+            {
+                return (IProgressResult<float, T>)result;
+            }
+
+            ProgressResult<float,T> load = ProgressResult<float, T>.Create();
+            if (self.handlers.TryGetValue(location, out var handler))
+            {
+                load.SetResult((T)((AssetHandle)handler).AssetObject);
+            }
+            else
+            {
+                self.loadAssetAsyncProgress(load, location).Coroutine();
+            }
+
+            return load;
+        }
+
+        private static async ETTask loadAssetAsyncProgress<T>(this ResourcesLoaderComponent self, ProgressResult<float, T> load, string location)
+                where T : UnityEngine.Object
+        {
+            using CoroutineLock coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>()
+                    .Wait(CoroutineLockType.ResourcesLoader, location.GetHashCode());
+
+            if (!self.handlers.TryGetValue(location, out var handler))
+            {
+                handler = self.package.LoadAssetAsync<T>(location);
+                self.loadingProgress.Add(location, load);
+                self.handlers.Add(location, handler);
+                load.Callbackable().OnCallback(r => { self.loadingProgress.Remove(location); });
+            }
+            else
+            {
+                load.SetResult((T)((AssetHandle)handler).AssetObject);
+                return;
+            }
+
+
+            var timer = self.Root().GetComponent<TimerComponent>(); 
+            while (!handler.IsDone)
+            {
+                load.UpdateProgress(handler.Progress);
+                await timer.WaitFrameAsync();
+            }
+
+            load.SetResult((T)((AssetHandle)handler).AssetObject);
+        }
+
+        public static async ETTask<Dictionary<string, T>> LoadAllAssets<T>(this ResourcesLoaderComponent self, string location) where T : UnityEngine.Object
         {
             using CoroutineLock coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.ResourcesLoader, location.GetHashCode());
 
@@ -87,8 +137,8 @@ namespace ET.Client
 
             return dictionary;
         }
-
-        public static async ETTask LoadSceneAsync(this ResourcesLoaderComponent self, string location, LoadSceneMode loadSceneMode)
+        
+        public static async ETTask LoadScene(this ResourcesLoaderComponent self, string location, LoadSceneMode loadSceneMode)
         {
             using CoroutineLock coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.ResourcesLoader, location.GetHashCode());
 
@@ -103,6 +153,25 @@ namespace ET.Client
             await handler.Task;
             self.handlers.Add(location, handler);
         }
+        
+        public static T LoadAssetSync<T>(this ResourcesLoaderComponent self, string location) where T : UnityEngine.Object
+        {
+            if (self.Root().GetComponent<CoroutineLockComponent>().Contains(CoroutineLockType.ResourcesLoader, location.GetHashCode()))
+            {
+                Log.Error($"不允许同时同步和异步加载 {location}");
+                return null;
+            }
+
+            HandleBase handler;
+            if (!self.handlers.TryGetValue(location, out handler))
+            {
+                handler = self.package.LoadAssetSync<T>(location);
+
+                self.handlers.Add(location, handler);
+            }
+
+            return (T)((AssetHandle)handler).AssetObject;
+        }
     }
 
     /// <summary>
@@ -114,5 +183,6 @@ namespace ET.Client
     {
         public ResourcePackage package;
         public Dictionary<string, HandleBase> handlers = new();
+        public Dictionary<string, IAsyncResult> loadingProgress = new();
     }
 }

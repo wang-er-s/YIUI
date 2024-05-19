@@ -18,7 +18,7 @@ MonoBehaviour:
   Packages:
   - PackageName: DefaultPackage
     PackageDesc: 
-    EnableAddressable: 1
+    EnableAddressable: 0
     LocationToLower: 0
     IncludeAssetGUID: 0
     IgnoreDefaultType: 1
@@ -34,7 +34,7 @@ MonoBehaviour:
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
+        FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
     - GroupName: Code
@@ -61,19 +61,6 @@ MonoBehaviour:
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
-    - GroupName: UI
-      GroupDesc: 
-      AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/Bundles/UI
-        CollectorGUID: 3a57d524d1e0d7543828b2ac7273f608
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackSeparately
-        FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
     - GroupName: Unit
@@ -138,6 +125,19 @@ MonoBehaviour:
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Block
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Bundles/Block
+        CollectorGUID: 6346f91132a2e874eb9f36d63b808ed5
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackCollector
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

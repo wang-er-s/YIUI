@@ -19,7 +19,7 @@ namespace ET
             this.entity = t;
         }
         
-        private T UnWrap
+        public T UnWrap
         {
             get
             {

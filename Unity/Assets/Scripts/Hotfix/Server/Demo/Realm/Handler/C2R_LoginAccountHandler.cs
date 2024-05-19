@@ -1,6 +1,6 @@
 ﻿namespace ET.Server
 {
-    [MessageHandler(SceneType.Realm)]
+    [MessageSessionHandler(SceneType.Realm)]
     [FriendOfAttribute(typeof(ET.Server.AccountInfo))]
     public class C2R_LoginAccountHandler : MessageSessionHandler<C2R_LoginAccount, R2C_LoginAccount>
     {
@@ -65,7 +65,9 @@
                     R2L_LoginAccountRequest r2LLoginAccountRequest = R2L_LoginAccountRequest.Create();
                     r2LLoginAccountRequest.Account = request.AccountName;
 
-                    StartSceneConfig loginCenterConfig = StartSceneConfigCategory.Instance.LoginCenter;
+                    // 登录中心
+                    // StartSceneConfig loginCenterConfig = StartSceneConfigCategory.Instance.LoginCenter;
+                    StartSceneConfig loginCenterConfig = StartSceneConfigCategory.Instance.Match;
                     var loginAccountResponse = await session.Fiber().Root.GetComponent<MessageSender>().Call(loginCenterConfig.ActorId, r2LLoginAccountRequest);
                     if (loginAccountResponse.Error != ErrorCode.ERR_Success)
                     {

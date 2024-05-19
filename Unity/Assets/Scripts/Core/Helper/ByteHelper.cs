@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace ET
 {
@@ -124,6 +126,24 @@ namespace ET
 			hash ^= hash >> 17;
 			hash += hash << 5;
 			return hash;
+		}
+		
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool Contains(this int lhs, int rhs)
+		{
+			unsafe
+			{
+				return (*&lhs & *&rhs) > 0;
+			}
+		}
+		
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool Contains(this uint lhs, uint rhs)
+		{
+			unsafe
+			{
+				return (*&lhs & *&rhs) > 0;
+			}
 		}
 	}
 }

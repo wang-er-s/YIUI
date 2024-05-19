@@ -1,17 +1,80 @@
 <module name="">
-    <bean name="vector2" valueType="1" sep=",">
+    <bean name="_float2" valueType="1" sep="," group="*">
         <var name="x" type="float"/>
         <var name="y" type="float"/>
+        <mapper target="client" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.float2"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToFloat2"/>
+        </mapper>
+        <mapper target="all" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.float2"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToFloat2"/>
+        </mapper>
     </bean>
-    <bean name="vector3" valueType="1" sep=",">
+    <bean name="_float3" valueType="1" sep="," group="*">
         <var name="x" type="float"/>
         <var name="y" type="float"/>
         <var name="z" type="float"/>
+        <mapper target="client" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.float3"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToFloat3"/>
+        </mapper>
+        <mapper target="all" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.float3"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToFloat3"/>
+        </mapper>
     </bean>
-    <bean name="vector4" valueType="1" sep=",">
+    <bean name="_float4" valueType="1" sep="," group="*">
         <var name="x" type="float"/>
         <var name="y" type="float"/>
         <var name="z" type="float"/>
         <var name="w" type="float"/>
+        <mapper target="client" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.float4"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToFloat4"/>
+        </mapper>
+        <mapper target="all" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.float4"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToFloat4"/>
+        </mapper>
+    </bean>
+    <bean name="_int2" valueType="1" sep="," group="*">
+        <var name="x" type="int"/>
+        <var name="y" type="int"/>
+        <mapper target="client" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.int2"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToInt2"/>
+        </mapper>
+        <mapper target="all" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.int2"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToInt2"/>
+        </mapper>
+    </bean>
+    <bean name="_int3" valueType="1" sep="," group="*">
+        <var name="x" type="int"/>
+        <var name="y" type="int"/>
+        <var name="z" type="int"/>
+        <mapper target="client" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.int3"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToInt3"/>
+        </mapper>
+        <mapper target="all" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.int3"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToInt3"/>
+        </mapper>
+    </bean>
+    <bean name="_int4" valueType="1" sep="," group="*">
+        <var name="x" type="int"/>
+        <var name="y" type="int"/>
+        <var name="z" type="int"/>
+        <var name="w" type="int"/>
+        <mapper target="client" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.int4"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToInt4"/>
+        </mapper>
+        <mapper target="all" codeTarget="cs-bin">
+            <option name="type" value="Unity.Mathematics.int4"/>
+            <option name="constructor" value="ET.ConfigTypeConvertor.ToInt4"/>
+        </mapper>
     </bean>
 </module>

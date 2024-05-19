@@ -6,6 +6,10 @@ namespace ET
     public class SemaphoreSlimComponent : IDisposable, IPool
     {
         public bool IsFromPool { get; set; }
+        public void Clear()
+        {
+        }
+
         private readonly SemaphoreSlim m_Semaphore = new(1, 1);
         private long m_Key;
         private int m_MillisecondsTimeout;
