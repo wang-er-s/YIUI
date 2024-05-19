@@ -6,7 +6,7 @@ namespace YIUIFramework
 {
     public partial class RedDotMgr
     {
-        private const string RedDotKeyAssetName = "RedDotKeyAsset";
+        private const string RedDotKeyAssetName = "Assets/GameRes/RedDot/RedDotKeyAsset.asset";
 
         private Dictionary<ERedDotKeyType, RedDotKeyData> m_AllRedDotKeyData =
             new Dictionary<ERedDotKeyType, RedDotKeyData>();

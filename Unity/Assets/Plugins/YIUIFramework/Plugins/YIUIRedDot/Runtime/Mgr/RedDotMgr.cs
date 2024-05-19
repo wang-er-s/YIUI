@@ -18,7 +18,7 @@ namespace YIUIFramework
     {
         private static bool SyncSetCount = false; //实时修改红点还是异步脏标定时修改
 
-        private const string RedDotConfigAssetName = "RedDotConfigAsset";
+        private const string RedDotConfigAssetName = "Assets/GameRes/RedDot/RedDotConfigAsset.asset";
 
         private Dictionary<ERedDotKeyType, RedDotData> m_AllRedDotData = new Dictionary<ERedDotKeyType, RedDotData>();
 
